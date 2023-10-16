@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.morse {
+  font-family: var(--font-morse);
+  letter-spacing: 0.6em;
+}
+
+.text-center .morse,
+.text-center.morse {
+  text-indent: 0.6em;
+}
+
 .section {
   @apply py-10;
 }

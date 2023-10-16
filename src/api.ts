@@ -20,4 +20,9 @@ export const strapiFunctions = {
     const data = await res.json();
     return data.data[0];
   },
+  getExamPage: async (): Promise<string> => {
+    const res = await fetch(`${strapiUrl}/api/exam`);
+    const data = await res.json();
+    return data.data.attributes.content;
+  },
 };

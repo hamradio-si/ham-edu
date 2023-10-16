@@ -14,7 +14,7 @@ export default async function VsebinePage() {
         {articles.map(({ attributes: a }) => (
           <Link
             key={a.slug}
-            href={`/a/${a.slug}`}
+            href={`/v/${a.slug}`}
             className="card border border-base-300"
           >
             <div className="card-body">
