@@ -1,4 +1,10 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Kontakt',
+  description: 'Kontaktne informacije',
+};
 
 export default function ContactPage() {
   return (

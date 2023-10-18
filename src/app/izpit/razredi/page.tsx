@@ -1,5 +1,11 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Razredi radioamaterjev',
+  description: 'Premerjava razredov radioamaterjev',
+};
 
 const classes = [
   {
@@ -49,7 +55,7 @@ export default function ClassesPage() {
   return (
     <div className="section container">
       <div className="prose mx-auto">
-        <h1 className="text-center">Kategoriji radioamaterskih izpitov</h1>
+        <h1 className="text-center">Razreda radioamaterjev</h1>
       </div>
 
       <div className="mt-10 flex flex-col items-center justify-center gap-6 md:flex-row md:items-stretch">

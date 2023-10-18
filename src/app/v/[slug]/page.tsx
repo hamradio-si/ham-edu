@@ -1,10 +1,25 @@
 import { strapiFunctions } from '@/api';
 import { MDX } from '@/components/mdx';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface ArticlePageProps {
   params: {
     slug: string;
+  };
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: ArticlePageProps): Promise<Metadata> {
+  const article = await strapiFunctions
+    .getArticleBySlug(slug)
+    .then((a) => a.attributes);
+
+  return {
+    title: article.title,
+    description: article.subtitle ?? article.title,
+    authors: article.author ? { name: article.author } : undefined,
   };
 }
 

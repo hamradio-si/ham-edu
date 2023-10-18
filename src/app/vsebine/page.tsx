@@ -1,5 +1,11 @@
 import { strapiFunctions } from '@/api';
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Vsebine',
+  description: 'Poučne vsebine',
+};
 
 export default async function VsebinePage() {
   const articles = await strapiFunctions.getArticles();

@@ -45,15 +45,15 @@ export default function License() {
 
       <h2>Klicni znak</h2>
       <p>
-        Klicne znake v Sloveniji določa <strong>6. člen</strong>{' '}
+        Klicne znake v Sloveniji določa{' '}
         <Link
           className="link"
-          href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/splosni-akt-o-pogojih-za-uporabo-radijskih-frekvenc-namenjenih-radioamaterski-in-radioamaterski-satelitski-storitvi"
+          href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/#6.%C2%A0%C4%8Dlen"
         >
-          splošnega akta o pogojih za uporabo radijskih frekvenc, namenjenih
-          radioamaterski in radioamaterski satelitski storitvi
-        </Link>
-        .
+          4. členu splošnega akta
+        </Link>{' '}
+        o pogojih za uporabo radijskih frekvenc, namenjenih radioamaterski in
+        radioamaterski satelitski storitvi.
       </p>
       <p>
         Klicni znak, s katerim se identificira oddajanje radioamaterske radijske

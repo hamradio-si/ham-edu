@@ -1,5 +1,11 @@
 import { strapiFunctions } from '@/api';
 import { MDX } from '@/components/mdx';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Radioamaterski izpit',
+  description: 'Informacije o radioamaterskem izpitu',
+};
 
 export default async function Izpit() {
   const source = await strapiFunctions.getExamPage();

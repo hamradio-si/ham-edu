@@ -11,8 +11,25 @@ const links = [
     href: '/vsebine',
   },
   {
-    title: 'Radioamaterski izpit',
-    href: '/izpit',
+    title: 'Izpit in licenca',
+    sub: [
+      {
+        title: 'Radioamaterski izpit',
+        href: '/izpit',
+      },
+      {
+        title: 'Primerjava razredov radioamaterjev',
+        href: '/izpit/razredi',
+      },
+      {
+        title: 'Radioamatersko dovoljenje (licenca)',
+        href: '/licenca',
+      },
+      {
+        title: 'Izbira klicnega znaka',
+        href: '/licenca/klicni-znak',
+      },
+    ],
   },
   {
     title: 'Vaje',
@@ -36,20 +53,41 @@ export function Header() {
       </div>
       <div className="navbar-end hidden md:flex">
         <ul className="menu menu-horizontal gap-1 px-1">
-          {links.map(({ href, title }) => (
+          {links.map(({ href, title, sub }) => (
             <li key={title}>
-              <Link
-                href={href}
-                className={pathname == href ? 'btn-active' : ''}
-              >
-                {title}
-              </Link>
+              {sub ? (
+                <div className="dropdown dropdown-end dropdown-bottom dropdown-hover">
+                  <label tabIndex={0}>{title}</label>
+                  <ul
+                    tabIndex={0}
+                    className="menu dropdown-content rounded-box z-[1] w-64 bg-base-100 p-2 shadow"
+                  >
+                    {sub.map(({ title, href }) => (
+                      <li key={title} tabIndex={0}>
+                        <Link
+                          href={href}
+                          className={pathname == href ? 'btn-active' : ''}
+                        >
+                          {title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  href={href}
+                  className={pathname == href ? 'btn-active' : ''}
+                >
+                  {title}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
       </div>
       <div className="navbar-end md:hidden">
-        <div className="dropdown dropdown-end">
+        <div className="dropdown-end dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
             <FontAwesomeIcon icon={faBars} className="h-4 w-4" />
           </label>
@@ -60,7 +98,7 @@ export function Header() {
             {links.map(({ title, href }) => (
               <li key={title}>
                 <Link
-                  href={href}
+                  href={href ?? ''}
                   className={pathname == href ? 'btn-active' : ''}
                 >
                   {title}

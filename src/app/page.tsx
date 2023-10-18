@@ -10,21 +10,19 @@ export default function Home() {
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content py-10 text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Pozdravljen</h1>
-            <p className="mb-5">
-              Dobrodošel na Radioamaterskem Izobraževalnem Portalu Zveze
-              Radioamaterjev Slovenije. Na tem portalu lahko najdeš vsebine, ki
-              pomagajo pri pripravi na radioamaterski izpit ali pa samo želiš
-              izvedeti kaj več o radioamaterstvu.
-            </p>
-            <div className="flex justify-center gap-3">
-              <button className="btn btn-primary">
-                Priprava na radioamaterski izpit
-              </button>
-              <button className="btn btn-primary">Brskaj vsebine</button>
-            </div>
+        <div className="section container max-w-lg text-center text-neutral-content">
+          <h1 className="mb-5 text-5xl font-bold">Pozdravljen</h1>
+          <p className="mb-5">
+            Dobrodošel na Radioamaterskem Izobraževalnem Portalu Zveze
+            Radioamaterjev Slovenije. Na tem portalu lahko najdeš vsebine, ki
+            pomagajo pri pripravi na radioamaterski izpit ali pa samo želiš
+            izvedeti kaj več o radioamaterstvu.
+          </p>
+          <div className="flex flex-col gap-3">
+            <button className="btn btn-primary">
+              Priprava na radioamaterski izpit
+            </button>
+            <button className="btn btn-primary">Brskaj vsebine</button>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'katex/dist/katex.min.css';
+
 .morse {
   font-family: var(--font-morse);
   letter-spacing: 0.6em;

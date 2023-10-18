@@ -8,7 +8,10 @@ import { morse } from '@/fonts/fonts';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Radioamaterski Izobraževalni Portal',
+  title: {
+    default: 'Radioamaterski Izobraževalni Portal',
+    template: '%s | Radioamaterski Izobraževalni Portal',
+  },
   description:
     'Radioamaterski Izobraževalni Portal Zveze Radioamaterjev Slovenije',
 };
