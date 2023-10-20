@@ -4,9 +4,32 @@ export interface Article {
     title: string;
     slug: string;
     subtitle?: string;
-    cover?: string;
+    cover: {
+      data?: {
+        id: number;
+        attributes: {
+          name: string;
+          alternativeText: string;
+          caption: string;
+          width: number;
+          height: number;
+          formats: object;
+          hash: string;
+          ext: string;
+          mime: string;
+          size: number;
+          url: string;
+          previewUrl: string;
+          provider: string;
+          provider_metadata: object;
+          created_at: string;
+          updated_at: string;
+        };
+      };
+    };
     author?: string;
     in_exam?: boolean;
+    category: string;
     content: string;
     createdAt: string;
     updatedAt: string;
