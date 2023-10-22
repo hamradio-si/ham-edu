@@ -58,10 +58,10 @@ export function Header() {
               {sub ? (
                 <div className="dropdown dropdown-end dropdown-bottom dropdown-hover hover:bg-white/20 [&:hover>label]:text-white">
                   <label tabIndex={0}>{title}</label>
-                  <div className="menu dropdown-content p-0 pt-4">
+                  <div className="menu dropdown-content z-[1] p-0 pt-4">
                     <ul
                       tabIndex={0}
-                      className="rounded-box z-[1] w-64 bg-base-100 p-2 shadow"
+                      className="rounded-box w-64 bg-base-100 p-2 shadow"
                     >
                       {sub.map(({ title, href }) => (
                         <li key={title} tabIndex={0}>

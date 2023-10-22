@@ -10,7 +10,7 @@ export function Hero({ image, className, children }: HeroProps) {
       className={`hero relative flex ${className}`}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="container z-10">
+      <div className="container">
         <div className="max-w-lg rounded-2xl bg-neutral/80 p-10 text-white">
           {children}
         </div>
