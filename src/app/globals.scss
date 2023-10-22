@@ -14,8 +14,16 @@
   text-indent: 0.6em;
 }
 
+.btn-primary {
+  @apply text-white;
+}
+
 .section {
   @apply py-10;
+}
+
+.prose {
+  @apply relative;
 }
 
 .prose table {
@@ -31,7 +39,7 @@
 
   margin-left: -1em;
   padding-right: 0.5em;
-  width: 80%;
+  width: 100%;
   max-width: 700px;
   cursor: pointer;
 }

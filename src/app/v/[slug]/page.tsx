@@ -62,7 +62,9 @@ export default async function ArticlePage({
 
         {article.subtitle && <p className="my-2">{article.subtitle}</p>}
         <div className="flex items-center gap-2">
-          <span className="badge badge-ghost">{article.category}</span>
+          <span className="badge badge-ghost">
+            {article.category.data?.attributes.name}
+          </span>
           {article.in_exam && (
             <span className="badge badge-primary">V izpitu</span>
           )}

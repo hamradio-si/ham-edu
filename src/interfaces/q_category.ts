@@ -1,4 +1,4 @@
-export interface Category {
+export interface QCategory {
   id: number;
   title: string;
 }

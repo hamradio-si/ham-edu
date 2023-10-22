@@ -4,7 +4,7 @@ import { Question } from '@/interfaces/question';
 import { getCategories, getQuestions } from '@/util/question-util';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import { Category } from '@/interfaces/category';
+import { QCategory } from '@/interfaces/q_category';
 import QuestionCard from '@/components/question_card';
 
 const qPerPage = 5;
@@ -12,7 +12,7 @@ const qPerPage = 5;
 interface QuizStore {
   isLoading: boolean;
 
-  categories: Category[];
+  categories: QCategory[];
   selectedCategory: string;
 
   questions: Question[];
@@ -88,11 +88,11 @@ export default function VajaQuiz() {
         <label htmlFor="category" className="mb-2 block font-medium">
           Izberi kategorijo
         </label>
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row flex-wrap gap-3">
           <select
             id="category"
             name="category"
-            className="select select-bordered flex-1"
+            className="select select-bordered w-full flex-1 sm:w-auto"
             value={selectedCategory}
             onChange={(e) => {
               const selectedCategory = e.target.value;
@@ -109,7 +109,7 @@ export default function VajaQuiz() {
           </select>
 
           <button
-            className="btn btn-primary"
+            className="btn btn-primary w-full sm:w-auto"
             disabled={isLoading}
             onClick={!isLoading ? () => load(selectedCategory) : undefined}
           >

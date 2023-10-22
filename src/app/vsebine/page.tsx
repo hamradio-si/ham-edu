@@ -2,27 +2,28 @@ import { strapiFunctions, strapiUrl } from '@/api';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Search } from './search';
+import { CategoryButtonFilter } from './category-filter';
 
 export const metadata: Metadata = {
   title: 'Vsebine',
   description: 'Poučne vsebine',
 };
 
-const kategorije = [
-  'Predpisi',
-  'Operaterstvo',
-  'Elektrotehnika',
-  'Signali in modulacija',
-  'Oddajniki',
-  'Sprejemniki',
-  'Valovanje',
-  'Antene in napajanje anten',
-  'Motnje',
-  'Meritve',
-];
+export default async function VsebinePage({
+  searchParams,
+}: {
+  searchParams: { c?: string; q?: string };
+}) {
+  const filter = {
+    category: searchParams.c ? +searchParams.c : undefined,
+    search: searchParams.q,
+  };
 
-export default async function VsebinePage() {
-  const articles = await strapiFunctions.getArticles();
+  const [articles, categories] = await Promise.all([
+    strapiFunctions.getArticles(filter),
+    strapiFunctions.getCategories(),
+  ]);
 
   return (
     <div className="section container">
@@ -30,34 +31,43 @@ export default async function VsebinePage() {
         <h1>Vsebine</h1>
       </div>
 
-      <div className="gap-8 lg:flex">
+      <div className="flex flex-col-reverse gap-8 lg:flex-row">
         <div className="flex-1">
-          <div>
-            <input
-              type="search"
-              placeholder="Išči"
-              className="input input-bordered w-full max-w-lg"
-            />
-          </div>
+          <Search />
+
+          {articles.length === 0 && (
+            <div className="card mt-4 bg-base-200">
+              <div className="card-body">
+                <h2 className="card-title">Ni rezultatov</h2>
+                <p className="card-text">
+                  Poizkusite z drugačnim iskalnim nizom.
+                </p>
+              </div>
+            </div>
+          )}
 
           {articles.map(({ attributes: a }) => (
             <Link
               key={a.slug}
               href={`/v/${a.slug}`}
-              className="flex w-full flex-col gap-8 overflow-clip border-b border-base-200 px-6 py-8 last:border-0 md:flex-row"
+              className="flex w-full flex-col gap-8 overflow-clip border-b border-base-200 px-6 py-8 md:flex-row lg:last:border-0"
             >
               <div className="flex flex-1 flex-col gap-2">
                 <div className="card-title">{a.title}</div>
 
                 {a.subtitle && <div className="card-text">{a.subtitle}</div>}
                 <div className="flex items-center gap-2">
-                  <span className="badge badge-ghost">{a.category}</span>
+                  {a.category?.data && (
+                    <span className="badge badge-ghost">
+                      {a.category.data?.attributes.name}
+                    </span>
+                  )}
                   {a.in_exam && (
                     <span className="badge badge-primary">V izpitu</span>
                   )}
                 </div>
               </div>
-              {a.cover.data && (
+              {a.cover?.data && (
                 <figure>
                   <Image
                     src={`${strapiUrl}${a.cover.data.attributes.url}`}
@@ -77,20 +87,8 @@ export default async function VsebinePage() {
           ))}
         </div>
 
-        <div className="lg:w-1/3">
-          <h3 className="mb-4 text-xl font-bold">Priporočene kategorije</h3>
-
-          <div className="flex flex-wrap gap-2">
-            {kategorije.map((k) => (
-              <Link
-                key={k}
-                href={`?cat=${k}`}
-                className="badge badge-ghost px-4 py-4"
-              >
-                {k}
-              </Link>
-            ))}
-          </div>
+        <div className="border-base-200 lg:w-1/3 lg:border-l lg:pl-8">
+          <CategoryButtonFilter categories={categories} />
         </div>
       </div>
     </div>

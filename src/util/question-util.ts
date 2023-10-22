@@ -1,10 +1,10 @@
-import { Category } from '@/interfaces/category';
+import { QCategory } from '@/interfaces/q_category';
 import { Question } from '@/interfaces/question';
 import Random from './random';
 
 interface QuestionFile {
   questions: Question[];
-  categories: Category[];
+  categories: QCategory[];
 }
 
 let json: QuestionFile | null = null;
@@ -30,7 +30,7 @@ export const getQuestions = async (): Promise<Question[]> => {
   }));
 };
 
-export const getCategories = async (): Promise<Category[]> => {
+export const getCategories = async (): Promise<QCategory[]> => {
   const file = await openFile();
 
   return file.categories.map((category) => ({

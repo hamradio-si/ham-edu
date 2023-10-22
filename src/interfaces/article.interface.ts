@@ -1,3 +1,5 @@
+import { Category } from './category.interface';
+
 export interface Article {
   id: number;
   attributes: {
@@ -29,7 +31,9 @@ export interface Article {
     };
     author?: string;
     in_exam?: boolean;
-    category: string;
+    category: {
+      data?: Category;
+    };
     content: string;
     createdAt: string;
     updatedAt: string;

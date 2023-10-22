@@ -17,7 +17,7 @@ export default function License() {
       </h1>
       <p>
         Radioamaterska dovoljenja izdaja{' '}
-        <Link className="link-light" href="https://www.akos-rs.si/">
+        <Link href="https://www.akos-rs.si/">
           agencija za komunikacijska omrežja in storitve Republike Slovenije
           (AKOS)
         </Link>
@@ -26,10 +26,7 @@ export default function License() {
       <p>
         Po opravljenem izpitu lahko zaprosiš za radioamatersko dovoljenje, ki ga
         lahko uporabljaš v vseh{' '}
-        <Link
-          className="link-light"
-          href="https://en.wikipedia.org/wiki/European_Conference_of_Postal_and_Telecommunications_Administrations"
-        >
+        <Link href="https://en.wikipedia.org/wiki/European_Conference_of_Postal_and_Telecommunications_Administrations">
           državah članicah CEPT
         </Link>
         .
@@ -46,10 +43,7 @@ export default function License() {
       <h2>Klicni znak</h2>
       <p>
         Klicne znake v Sloveniji določa{' '}
-        <Link
-          className="link"
-          href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/#6.%C2%A0%C4%8Dlen"
-        >
+        <Link href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/#6.%C2%A0%C4%8Dlen">
           4. členu splošnega akta
         </Link>{' '}
         o pogojih za uporabo radijskih frekvenc, namenjenih radioamaterski in
@@ -70,10 +64,7 @@ export default function License() {
       <h3>Izbira klicnega znaka</h3>
       <p>
         Seznam zasedenih klicnih znakov je dostopen v{' '}
-        <Link
-          className="link"
-          href="https://www.akos-rs.si/registri/seznam-registrov/radioamaterji"
-        >
+        <Link href="https://www.akos-rs.si/registri/seznam-registrov/radioamaterji">
           registru radioamaterjev
         </Link>
         .
@@ -98,7 +89,7 @@ export default function License() {
         <li>S58ZAA - S58ZZZ</li>
       </ul>
 
-      <Link href="/licenca/klicni-znak" className="btn btn-primary w-full">
+      <Link href="/licenca/klicni-znak" className="btn btn-primary">
         Pomagaj izbrati klicni znak
       </Link>
 
@@ -125,12 +116,14 @@ export default function License() {
 
       <div className="mt-6 flex flex-col gap-4 text-center md:flex-row">
         <Link
+          target="_blank"
           className="btn btn-primary flex-1"
           href="https://evloge.akos-rs.si/"
         >
           Elektronska vloga
         </Link>
         <Link
+          target="_blank"
           className="btn btn-primary flex-1"
           href="https://www.akos-rs.si/fileadmin/user_upload/Vloga_za_radioamatersko_dovoljenje.dotx"
         >

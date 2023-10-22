@@ -63,9 +63,7 @@ export default function ClassesPage() {
           <div
             key={c.name}
             className={`flex max-w-sm flex-1 flex-col rounded-2xl p-6 ${
-              c.premium
-                ? 'bg-neutral text-neutral-content shadow-lg shadow-secondary'
-                : 'bg-base-200'
+              c.premium ? 'bg-neutral text-neutral-content' : 'bg-base-200'
             }`}
           >
             <h4 className="mb-4 text-center text-lg font-bold">{c.name}</h4>
@@ -73,7 +71,7 @@ export default function ClassesPage() {
 
             <div
               className={`divider ${
-                c.premium ? 'before:bg-neutral-700 after:bg-neutral-700' : ''
+                c.premium ? 'before:bg-neutral-600 after:bg-neutral-600' : ''
               }`}
             />
 
@@ -91,7 +89,7 @@ export default function ClassesPage() {
 
             <div
               className={`divider ${
-                c.premium ? 'before:bg-neutral-700 after:bg-neutral-700' : ''
+                c.premium ? 'before:bg-neutral-600 after:bg-neutral-600' : ''
               }`}
             />
 
