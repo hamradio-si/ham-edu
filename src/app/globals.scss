@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'katex/dist/katex.min.css';
-
 .nav-btn {
   @apply btn btn-ghost btn-sm h-auto px-3.5 py-2.5 font-normal normal-case hover:bg-white/20;
 }

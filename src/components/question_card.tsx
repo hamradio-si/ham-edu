@@ -1,4 +1,5 @@
-import { InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
 import Image from 'next/image';
 import { Question } from '@/interfaces/question';
 
@@ -88,7 +89,7 @@ function Answer({
       <div className="py-2 text-left text-lg">
         {answer.startsWith('$') ? (
           <span className="ml-2">
-            <InlineMath math={answer.slice(1, answer.length - 1)} />
+            <TeX math={answer.slice(1, answer.length - 1)} />
           </span>
         ) : (
           answer
