@@ -49,7 +49,7 @@ export default async function Home() {
             <Link
               key={a.slug}
               href={`/v/${a.slug}`}
-              className="card flex-1 shadow-lg transition-all hover:scale-[1.01] hover:shadow-xl"
+              className="card flex-1 shadow-lg transition-all hover:scale-[1.008] hover:shadow-xl"
             >
               {a.cover.data && (
                 <figure>

@@ -32,7 +32,7 @@ async function loadCallsigns() {
 
 export default function CallsignTool() {
   const [clas, setClas] = useState(1);
-  const [callsign, setCs] = useState('S50HQ');
+  const [callsign, setCs] = useState('');
   const [taken, free] = useStore((state) => [state.taken, state.free]);
   const [showSimilar, setShowSimilar] = useState(false);
 
@@ -83,9 +83,10 @@ export default function CallsignTool() {
         <label className="text-sm font-semibold">Vnesi klicni znak</label>
         <input
           type="text"
-          className={`input input-bordered input-lg text-center text-3xl uppercase ${robotoMono.className}`}
+          className={`input input-bordered input-lg text-center text-3xl uppercase placeholder:font-sans placeholder:normal-case ${robotoMono.className}`}
           value={callsign}
           onChange={(e) => setCallsign(e.target.value)}
+          placeholder='npr. "S50HQ"'
         />
         <div className="mt-1 flex flex-row gap-2">
           {clas ? (
@@ -186,6 +187,7 @@ export default function CallsignTool() {
 const tests = [
   {
     name: 'Se začne s S5',
+    preTest: (clas: number, callsign: string) => callsign.length > 0,
     test: (callsign: string) => /^S5/i.test(callsign),
   },
   {
