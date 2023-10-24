@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search } from './search';
-import { CategoryButtonFilter } from './category-filter';
+import { CategoryFilter } from './category-filter';
 
 export const metadata: Metadata = {
   title: 'Vsebine',
@@ -88,7 +88,7 @@ export default async function VsebinePage({
         </div>
 
         <div className="border-base-200 lg:w-1/3 lg:border-l lg:pl-8">
-          <CategoryButtonFilter categories={categories} />
+          <CategoryFilter categories={categories} />
         </div>
       </div>
     </div>

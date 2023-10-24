@@ -7,7 +7,7 @@ interface CategoryFilterProps {
   categories: Category[];
 }
 
-export function CategoryButtonFilter({ categories }: CategoryFilterProps) {
+export function CategoryFilter({ categories }: CategoryFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -26,8 +26,8 @@ export function CategoryButtonFilter({ categories }: CategoryFilterProps) {
   const selected = +(searchParams?.get('c') ?? '0');
 
   return (
-    <>
-      <div className="mb-4 flex flex-wrap items-baseline justify-between">
+    <div className="max-w-md">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="mr-2 text-xl font-bold">Kategorije</h3>
         <button
           onClick={() => set()}
@@ -37,7 +37,20 @@ export function CategoryButtonFilter({ categories }: CategoryFilterProps) {
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <select
+        className="select select-bordered w-full lg:hidden"
+        value={selected}
+        onChange={(e) => set(+e.target.value)}
+      >
+        <option value={undefined}>Vse</option>
+        {categories.map(({ id, attributes: { name } }) => (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        ))}
+      </select>
+
+      <div className="hidden flex-wrap gap-2 lg:flex">
         {categories.map(({ id, attributes: { name } }) => (
           <button
             key={id}
@@ -56,6 +69,6 @@ export function CategoryButtonFilter({ categories }: CategoryFilterProps) {
           </button>
         ))}
       </div>
-    </>
+    </div>
   );
 }
