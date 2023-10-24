@@ -13,14 +13,18 @@ interface ArticlePageProps {
 export async function generateMetadata({
   params: { slug },
 }: ArticlePageProps): Promise<Metadata> {
-  const article = await strapiFunctions
-    .getArticleBySlug(slug)
-    .then((a) => a.attributes);
+  const article = await strapiFunctions.getArticleBySlug(slug);
+
+  if (!article) {
+    throw new Error('Article not found');
+  }
+
+  const a = article.attributes;
 
   return {
-    title: article.title,
-    description: article.subtitle ?? article.title,
-    authors: article.author ? { name: article.author } : undefined,
+    title: a.title,
+    description: a.subtitle ?? a.title,
+    authors: a.author ? { name: a.author } : undefined,
   };
 }
 

@@ -58,7 +58,10 @@ export function Header() {
               {sub ? (
                 <div className="dropdown dropdown-end dropdown-bottom dropdown-hover hover:bg-white/20 [&:hover>label]:text-white">
                   <label tabIndex={0}>{title}</label>
-                  <div className="menu dropdown-content z-[1] p-0 pt-4">
+                  <div
+                    tabIndex={0}
+                    className="menu dropdown-content z-[1] p-0 pt-4"
+                  >
                     <ul
                       tabIndex={0}
                       className="rounded-box w-64 bg-base-100 p-2 shadow"
