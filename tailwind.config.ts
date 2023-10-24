@@ -16,6 +16,7 @@ const config: Config = {
     },
   },
   daisyui: {
+    logs: false,
     themes: [
       {
         zrs: {

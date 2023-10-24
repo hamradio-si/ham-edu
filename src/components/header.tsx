@@ -4,6 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 const links = [
   {
@@ -45,94 +46,74 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="navbar bg-secondary text-white">
-      <div className="navbar-start pl-3">
-        <Link href="/" className="text-xl font-semibold">
-          <h1>Radioamaterski Izobraževalni Portal</h1>
-        </Link>
+    <header className="flex items-center justify-between bg-secondary px-6 py-4 text-white">
+      <Link href="/" className="text-xl font-semibold">
+        Radioamaterski izobraževalni portal
+      </Link>
+
+      <div className="hidden items-center gap-1 sm:flex">
+        {links.map(({ href, sub, title }) =>
+          sub ? (
+            <Dropdown key={title} links={sub} title={title} />
+          ) : (
+            <Link
+              href={href}
+              key={href}
+              className={`nav-btn ${pathname === href ? 'nav-btn-active' : ''}`}
+            >
+              {title}
+            </Link>
+          ),
+        )}
       </div>
-      <div className="navbar-end hidden md:flex">
-        <ul className="menu menu-horizontal gap-1 px-1">
-          {links.map(({ href, title, sub }) => (
-            <li key={title}>
-              {sub ? (
-                <div className="dropdown dropdown-end dropdown-bottom dropdown-hover hover:bg-white/20 [&:hover>label]:text-white">
-                  <label tabIndex={0}>{title}</label>
-                  <div
-                    tabIndex={0}
-                    className="menu dropdown-content z-[1] p-0 pt-4"
-                  >
-                    <ul
-                      tabIndex={0}
-                      className="rounded-box w-64 bg-base-100 p-2 shadow"
-                    >
-                      {sub.map(({ title, href }) => (
-                        <li key={title} tabIndex={0}>
-                          <Link
-                            href={href}
-                            className={pathname == href ? 'btn-active' : ''}
-                          >
-                            {title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  href={href}
-                  className={`hover:bg-white/20 hover:text-white focus:!bg-white/20 focus:!text-white ${
-                    pathname == href ? 'bg-white/20' : ''
-                  }`}
-                >
-                  {title}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="navbar-end md:hidden">
-        <div className="dropdown-end dropdown">
-          <label tabIndex={0} className="btn btn-ghost md:hidden">
-            <FontAwesomeIcon icon={faBars} className="h-4 w-4" />
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 text-base-content shadow"
-          >
-            {links.map(({ title, href, sub }) => (
-              <li key={title}>
-                {sub ? (
-                  <>
-                    <label>{title}</label>
-                    <ul className="menu">
-                      {sub.map(({ title, href }) => (
-                        <li key={href}>
-                          <Link
-                            href={href}
-                            className={pathname == href ? 'btn-active' : ''}
-                          >
-                            {title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <Link
-                    href={href}
-                    className={pathname == href ? 'btn-active' : ''}
-                  >
-                    {title}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
+
+      <div className="sm:hidden">
+        <FontAwesomeIcon icon={faBars} />
       </div>
     </header>
+  );
+}
+
+function Dropdown({
+  links,
+  title,
+}: {
+  links: { title: string; href: string }[];
+  title: string;
+}) {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div key={title} onMouseLeave={() => setIsOpen(false)} className="relative">
+      <button
+        onMouseOver={() => setIsOpen(true)}
+        onClick={() => setIsOpen(!isOpen)}
+        className="nav-btn"
+      >
+        {title}
+      </button>
+
+      <div
+        onClick={() => setIsOpen(false)}
+        className={`absolute right-0 top-full z-[1] pt-4 ${
+          isOpen ? '' : 'hidden'
+        }`}
+      >
+        <div className="flex w-60 flex-col gap-1 rounded-xl bg-base-100 p-2 text-base-content shadow-md">
+          {links.map(({ href, title }) => (
+            <Link
+              href={href}
+              key={href}
+              className={`btn btn-ghost btn-sm h-auto justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
+                href === pathname ? 'btn-active' : ''
+              }`}
+            >
+              {title}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
