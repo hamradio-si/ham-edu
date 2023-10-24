@@ -31,7 +31,7 @@ export default function QuestionCard({
           alt={question.image}
           height={500}
           width={500}
-          style={{ width: 'auto', height: 'auto' }}
+          style={{ width: '100%', height: 'auto' }}
         />
       )}
 

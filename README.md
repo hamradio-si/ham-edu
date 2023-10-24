@@ -15,3 +15,12 @@ File: `.env.local`
 ```
 STRAPI_URL=http://localhost:1337
 ```
+
+## TODO
+
+- [ ] Pagination
+- [ ] Iskanje po vsebini
+- [ ] Zbirka vprašanj
+- [ ] Simulator izpita
+- [ ] Scroll to top button
+- [ ] Footer

@@ -45,9 +45,7 @@ export function Search() {
       />
       <FontAwesomeIcon
         icon={faSearch}
-        className="absolute right-4 top-1/2 -translate-y-1/2 transform text-gray-400"
-        height={16}
-        width={16}
+        className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400"
       />
     </div>
   );

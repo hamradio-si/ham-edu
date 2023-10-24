@@ -125,7 +125,7 @@ export default function CallsignTool() {
               >
                 <FontAwesomeIcon
                   icon={result ? faCheckCircle : faXmarkCircle}
-                  className={`w-5 ${
+                  className={`h-5 w-5 ${
                     result ? 'text-green-600' : 'text-red-600'
                   }`}
                 />
@@ -142,7 +142,9 @@ export default function CallsignTool() {
           >
             <FontAwesomeIcon
               icon={!isTaken ? faCheckCircle : faXmarkCircle}
-              className={`w-5 ${!isTaken ? 'text-green-600' : 'text-red-600'}`}
+              className={`h-5 w-5 ${
+                !isTaken ? 'text-green-600' : 'text-red-600'
+              }`}
             />
             <span>Klicni znak je {isTaken ? 'zaseden' : 'prost'}</span>
           </div>
