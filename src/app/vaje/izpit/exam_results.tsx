@@ -36,25 +36,27 @@ export function ExamResults({ questions, answers, reset }: ExamResultsProps) {
         </button>
       </div>
 
-      <div className="section">
-        <h1 className="mb-10 text-center text-2xl font-semibold">
-          Napačni odgovori
-        </h1>
+      {correct !== answers.length && (
+        <div className="section">
+          <h1 className="mb-10 text-center text-2xl font-semibold">
+            Napačni odgovori
+          </h1>
 
-        <div className="flex flex-col gap-12">
-          {questions.map(
-            (question, qi) =>
-              question.correct !== answers[qi] && (
-                <QuestionCard
-                  key={qi}
-                  question={question}
-                  reveal={true}
-                  selected={[answers[qi], question.correct]}
-                />
-              ),
-          )}
+          <div className="flex flex-col gap-12">
+            {questions.map(
+              (question, qi) =>
+                question.correct !== answers[qi] && (
+                  <QuestionCard
+                    key={qi}
+                    question={question}
+                    reveal={true}
+                    selected={[answers[qi], question.correct]}
+                  />
+                ),
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

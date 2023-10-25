@@ -1,6 +1,7 @@
 import QuestionCard from '@/components/question_card';
-import { getQuestions } from '@/util/question-util';
 import { Metadata } from 'next';
+import { questions } from '@/../public/questions.json';
+import { Question } from '@/interfaces/question';
 
 export const metadata: Metadata = {
   title: 'Zbirka vprašanj',
@@ -9,8 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default async function QuestionPool() {
-  const questions = await getQuestions();
-
   return (
     <div className="section container max-w-xl">
       <div className="prose mb-12">
@@ -18,7 +17,7 @@ export default async function QuestionPool() {
       </div>
 
       <div className="flex flex-col gap-12">
-        {questions?.map((question, qi) => (
+        {(questions as Question[]).map((question, qi) => (
           <QuestionCard
             key={qi}
             question={question}

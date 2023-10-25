@@ -21,6 +21,14 @@ STRAPI_URL=http://localhost:1337
 - [ ] Pagination
 - [ ] Iskanje po vsebini
 - [x] Zbirka vprašanj
+  - [ ] Pagination
+  - [ ] Search
+  - [ ] Filter
 - [x] Simulator izpita
 - [ ] Scroll to top button
 - [ ] Footer
+- [ ] Revalidate API
+- [ ] Analytics
+- [ ] SEO (Metadata, OpenGraph, Twitter, JSON-LD)
+- [ ] Sitemap, robots.txt
+- [ ] PWA ??

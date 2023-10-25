@@ -1,3 +1,4 @@
+import 'katex/dist/katex.min.css';
 import KaTeX from 'katex';
 import { memo } from 'react';
 

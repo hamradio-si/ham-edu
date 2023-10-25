@@ -1,4 +1,3 @@
-import 'katex/dist/katex.min.css';
 import Image from 'next/image';
 import { Question } from '@/interfaces/question';
 import { LazyTeX } from './lazy_tex';
