@@ -36,7 +36,7 @@ export function ExamInProgress({
           <div className="text-lg">
             {answers.filter((v) => v >= 0).length} / {answers.length}
           </div>
-          <Countdown timeEnd={timeEnd} />
+          <Countdown timeEnd={timeEnd} finish={finish} />
           <button className="btn btn-primary btn-sm" onClick={finish}>
             Zaključi
           </button>
@@ -46,16 +46,26 @@ export function ExamInProgress({
   );
 }
 
-export function Countdown({ timeEnd }: { timeEnd: Date }) {
+interface CountdownProps {
+  timeEnd: Date;
+  finish: () => void;
+}
+
+export function Countdown({ timeEnd, finish }: CountdownProps) {
   const [remaining, setRemaining] = useState(timeEnd.valueOf() - Date.now());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setRemaining(timeEnd.valueOf() - Date.now());
+      const newVal = Math.max(0, timeEnd.valueOf() - Date.now());
+      setRemaining(newVal);
+      if (newVal === 0) {
+        clearInterval(interval);
+        finish();
+      }
     }, 500);
 
     return () => clearInterval(interval);
-  }, [timeEnd]);
+  }, [timeEnd, finish]);
 
   return (
     <div className="text-lg">
