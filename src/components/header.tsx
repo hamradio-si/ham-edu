@@ -23,6 +23,10 @@ const links = [
         href: '/izpit/razredi',
       },
       {
+        title: 'Zbirka izpitnih vprašanj',
+        href: '/izpit/zbirka',
+      },
+      {
         title: 'Radioamatersko dovoljenje (licenca)',
         href: '/licenca',
       },

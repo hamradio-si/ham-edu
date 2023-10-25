@@ -1,12 +1,12 @@
 import 'katex/dist/katex.min.css';
-import TeX from '@matejmazur/react-katex';
 import Image from 'next/image';
 import { Question } from '@/interfaces/question';
+import { LazyTeX } from './lazy_tex';
 
 interface QuestionCardProps {
   question: Question;
   reveal: boolean;
-  selected: number[];
+  selected: number[] | number;
   onClick?: (answer: number) => void;
 }
 
@@ -44,7 +44,9 @@ export default function QuestionCard({
             answer={answer}
             reveal={reveal}
             isCorrect={question.correct === i}
-            isSelected={selected.includes(i)}
+            isSelected={
+              selected instanceof Array ? selected.includes(i) : selected === i
+            }
             onClick={!onClick ? undefined : () => onClick(i)}
           />
         ))}
@@ -76,20 +78,18 @@ function Answer({
         !isSelected
           ? ''
           : !reveal
-          ? 'border-primary bg-primary/30 text-primary-content hover:border-primary hover:bg-primary/30 hover:text-primary-content'
+          ? 'border-primary bg-primary/30 hover:border-primary hover:bg-primary/30'
           : isCorrect
           ? 'border-success bg-success/30 text-success-content hover:border-success hover:bg-success/30 hover:text-success-content'
           : 'border-error bg-error/30 text-error-content hover:border-error hover:bg-error/30 hover:text-error-content'
       } ${!onClick ? 'no-animation' : ''}`}
-      // disabled={!onClick}
       onClick={onClick}
     >
-      {!reveal && <input type="radio" checked={isSelected} readOnly />}
       <div className="text-sm font-bold">{String.fromCharCode(65 + index)}</div>
       <div className="py-2 text-left text-lg">
         {answer.startsWith('$') ? (
           <span className="ml-2">
-            <TeX math={answer.slice(1, answer.length - 1)} />
+            <LazyTeX math={answer.slice(1, answer.length - 1)} />
           </span>
         ) : (
           answer

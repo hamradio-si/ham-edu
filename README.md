@@ -20,7 +20,7 @@ STRAPI_URL=http://localhost:1337
 
 - [ ] Pagination
 - [ ] Iskanje po vsebini
-- [ ] Zbirka vprašanj
-- [ ] Simulator izpita
+- [x] Zbirka vprašanj
+- [x] Simulator izpita
 - [ ] Scroll to top button
 - [ ] Footer
