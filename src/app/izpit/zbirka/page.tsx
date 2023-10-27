@@ -1,7 +1,7 @@
 import QuestionCard from '@/components/question_card';
 import { Metadata } from 'next';
-import { questions } from '@/../public/questions.json';
-import { Question } from '@/interfaces/question';
+import questionFile from '@/../public/questions.json';
+import { QuestionFile } from '@/interfaces/question.interface';
 
 export const metadata: Metadata = {
   title: 'Zbirka vprašanj',
@@ -17,7 +17,7 @@ export default async function QuestionPool() {
       </div>
 
       <div className="flex flex-col gap-12">
-        {(questions as Question[]).map((question, qi) => (
+        {(questionFile as QuestionFile).questions.map((question, qi) => (
           <QuestionCard
             key={qi}
             question={question}

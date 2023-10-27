@@ -1,11 +1,9 @@
-import { QCategory } from '@/interfaces/q_category';
-import { Question } from '@/interfaces/question';
+import {
+  QCategory,
+  Question,
+  QuestionFile,
+} from '@/interfaces/question.interface';
 import Random from './random';
-
-interface QuestionFile {
-  questions: Question[];
-  categories: QCategory[];
-}
 
 let json: QuestionFile | null = null;
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Question } from '@/interfaces/question';
+import { Question } from '@/interfaces/question.interface';
 import { LazyTeX } from './lazy_tex';
 
 interface QuestionCardProps {

@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { StartForm } from './start_form';
 import { getExamQuestions } from '@/util/question-util';
 import { scrollToTop } from '@/util/scroll-util';
-import { Question } from '@/interfaces/question';
+import { Question } from '@/interfaces/question.interface';
 import { ExamInProgress } from './exam_in_progress';
 import { ExamResults } from './exam_results';
 

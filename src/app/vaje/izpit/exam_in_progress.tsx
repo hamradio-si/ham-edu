@@ -1,5 +1,5 @@
 import QuestionCard from '@/components/question_card';
-import { Question } from '@/interfaces/question';
+import { Question } from '@/interfaces/question.interface';
 import { useEffect, useState } from 'react';
 
 interface ExamInProgressProps {

@@ -1,10 +1,9 @@
 'use client';
 
-import { Question } from '@/interfaces/question';
+import { QCategory, Question } from '@/interfaces/question.interface';
 import { getCategories, getQuestions } from '@/util/question-util';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import { QCategory } from '@/interfaces/q_category';
 import QuestionCard from '@/components/question_card';
 
 const qPerPage = 5;
