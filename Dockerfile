@@ -14,6 +14,8 @@ FROM node:20-alpine AS builder
 ARG STRAPI_URL
 ENV STRAPI_URL=$STRAPI_URL
 
+ENV NEXT_OUTPUT=standalone
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

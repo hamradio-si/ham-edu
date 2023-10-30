@@ -1,8 +1,9 @@
 const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337';
+const output = process.env.OUTPUT || undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
+    output: output,
     images: {
         remotePatterns: [
             {
