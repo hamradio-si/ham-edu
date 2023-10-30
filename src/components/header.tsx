@@ -55,25 +55,32 @@ export function Header() {
         Radioamaterski izobraževalni portal
       </Link>
 
-      <div className="hidden items-center gap-1 lg:flex">
-        {links.map(({ href, sub, title }) =>
-          sub ? (
-            <Dropdown key={title} links={sub} title={title} />
-          ) : (
-            <Link
-              href={href}
-              key={href}
-              className={`nav-btn ${pathname === href ? 'nav-btn-active' : ''}`}
-            >
-              {title}
-            </Link>
-          ),
-        )}
-      </div>
+      <nav>
+        <ul className="hidden items-center gap-1 lg:flex">
+          {links.map(({ href, sub, title }) =>
+            sub ? (
+              <li key={title}>
+                <Dropdown links={sub} title={title} />
+              </li>
+            ) : (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={`nav-btn ${
+                    pathname === href ? 'nav-btn-active' : ''
+                  }`}
+                >
+                  {title}
+                </Link>
+              </li>
+            ),
+          )}
+        </ul>
 
-      <div className="relative flex lg:hidden">
-        <BurgerMenu />
-      </div>
+        <div className="relative flex lg:hidden">
+          <BurgerMenu />
+        </div>
+      </nav>
     </header>
   );
 }
@@ -104,10 +111,10 @@ function BurgerMenu() {
           isOpen ? '' : 'hidden'
         }`}
       >
-        <div className="flex w-64 flex-col gap-1 rounded-xl bg-base-100 p-2 text-base-content shadow-md">
+        <ul className="flex w-64 flex-col gap-1 rounded-xl bg-base-100 p-2 text-base-content shadow-md">
           {links.map(({ href, sub, title }) =>
             sub ? (
-              <div key={title}>
+              <li key={title}>
                 <div
                   className={`btn btn-ghost btn-sm h-auto w-full justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
                     href === pathname ? 'btn-active' : ''
@@ -115,40 +122,39 @@ function BurgerMenu() {
                 >
                   {title}
                 </div>
-                {sub && (
-                  <div className="pl-5">
-                    <ul className="mt-1 w-full border-l border-base-300 pl-2">
-                      {sub.map(({ href, title }) => (
-                        <li key={href}>
-                          <Link
-                            href={href}
-                            className={`btn btn-ghost btn-sm h-auto w-full justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
-                              href === pathname ? 'btn-active' : ''
-                            }`}
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+                <div className="pl-5">
+                  <ul className="mt-1 w-full border-l border-base-300 pl-2">
+                    {sub.map(({ href, title }) => (
+                      <li key={href}>
+                        <Link
+                          href={href}
+                          className={`btn btn-ghost btn-sm h-auto w-full justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
+                            href === pathname ? 'btn-active' : ''
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
             ) : (
-              <Link
-                key={href}
-                href={href}
-                className={`btn btn-ghost btn-sm h-auto w-full justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
-                  href === pathname ? 'btn-active' : ''
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {title}
-              </Link>
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={`btn btn-ghost btn-sm h-auto w-full justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
+                    href === pathname ? 'btn-active' : ''
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {title}
+                </Link>
+              </li>
             ),
           )}
-        </div>
+        </ul>
       </div>
     </>
   );
@@ -166,13 +172,13 @@ function Dropdown({
 
   return (
     <div key={title} onMouseLeave={() => setIsOpen(0)} className="relative">
-      <button
+      <label
         onMouseOver={() => setIsOpen(isOpen | 1)}
         onClick={() => setIsOpen(isOpen ^ 2)}
         className="nav-btn"
       >
         {title}
-      </button>
+      </label>
 
       <div
         onClick={() => setIsOpen(0)}
@@ -180,19 +186,20 @@ function Dropdown({
           isOpen ? '' : 'hidden'
         }`}
       >
-        <div className="flex w-60 flex-col gap-1 rounded-xl bg-base-100 p-2 text-base-content shadow-md">
+        <ul className="flex w-60 flex-col gap-1 rounded-xl bg-base-100 p-2 text-base-content shadow-md">
           {links.map(({ href, title }) => (
-            <Link
-              href={href}
-              key={href}
-              className={`btn btn-ghost btn-sm h-auto justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
-                href === pathname ? 'btn-active' : ''
-              }`}
-            >
-              {title}
-            </Link>
+            <li key={href}>
+              <Link
+                href={href}
+                className={`btn btn-ghost btn-sm h-auto w-full justify-start px-4 py-1.5 text-left font-normal normal-case leading-normal ${
+                  href === pathname ? 'btn-active' : ''
+                }`}
+              >
+                {title}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
