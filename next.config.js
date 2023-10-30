@@ -1,5 +1,5 @@
 const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337';
-const output = process.env.OUTPUT || undefined;
+const output = process.env.NEXT_OUTPUT || undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
