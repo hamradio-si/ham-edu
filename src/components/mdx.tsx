@@ -7,19 +7,28 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
+import 'katex/dist/katex.min.css';
+
 const components = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   img: (props: any) => (
     <Link href={props.src}>
       <Image
+        {...props}
         width={600}
         height={600}
         alt={props.alt}
         style={{ width: '100%', height: 'auto' }}
-        {...props}
       />
     </Link>
   ),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  a: (props: any) =>
+    props.href.startsWith('http') ? (
+      <Link target="_blank" {...props} />
+    ) : (
+      <Link {...props} />
+    ),
 };
 
 export function MDX({ source }: { source: string }) {

@@ -17,7 +17,7 @@ export default function License() {
       </h1>
       <p>
         Radioamaterska dovoljenja izdaja{' '}
-        <Link href="https://www.akos-rs.si/">
+        <Link target="_blank" href="https://www.akos-rs.si/">
           agencija za komunikacijska omrežja in storitve Republike Slovenije
           (AKOS)
         </Link>
@@ -26,7 +26,10 @@ export default function License() {
       <p>
         Po opravljenem izpitu lahko zaprosiš za radioamatersko dovoljenje, ki ga
         lahko uporabljaš v vseh{' '}
-        <Link href="https://en.wikipedia.org/wiki/European_Conference_of_Postal_and_Telecommunications_Administrations">
+        <Link
+          target="_blank"
+          href="https://en.wikipedia.org/wiki/European_Conference_of_Postal_and_Telecommunications_Administrations"
+        >
           državah članicah CEPT
         </Link>
         .
@@ -43,8 +46,11 @@ export default function License() {
       <h2>Klicni znak</h2>
       <p>
         Klicne znake v Sloveniji določa{' '}
-        <Link href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/#6.%C2%A0%C4%8Dlen">
-          4. členu splošnega akta
+        <Link
+          target="_blank"
+          href="https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-0256/#6.%C2%A0%C4%8Dlen"
+        >
+          6. členu splošnega akta
         </Link>{' '}
         o pogojih za uporabo radijskih frekvenc, namenjenih radioamaterski in
         radioamaterski satelitski storitvi.
@@ -64,7 +70,10 @@ export default function License() {
       <h3>Izbira klicnega znaka</h3>
       <p>
         Seznam zasedenih klicnih znakov je dostopen v{' '}
-        <Link href="https://www.akos-rs.si/registri/seznam-registrov/radioamaterji">
+        <Link
+          target="_blank"
+          href="https://www.akos-rs.si/registri/seznam-registrov/radioamaterji"
+        >
           registru radioamaterjev
         </Link>
         .

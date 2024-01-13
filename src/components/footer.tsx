@@ -4,7 +4,11 @@ export function Footer() {
   return (
     <footer className="footer bg-base-200 p-10 text-base-content">
       <aside>
-        <Link className="text-lg font-medium" href="https://www.hamradio.si/">
+        <Link
+          target="_blank"
+          className="text-lg font-medium"
+          href="https://www.hamradio.si/"
+        >
           Zveza Radioamaterjev Slovenije
         </Link>
         <p>
