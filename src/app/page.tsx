@@ -49,24 +49,24 @@ export default async function Home() {
             <Link
               key={a.slug}
               href={`/v/${a.slug}`}
-              className="card flex-1 shadow-lg transition-all hover:scale-[1.008] hover:shadow-xl"
+              className="card flex-1 shadow-lg transition-all hover:shadow-xl"
             >
-              {a.cover.data && (
-                <figure>
+              <figure>
+                {a.cover.data ? (
                   <Image
                     src={`${strapiUrl}${a.cover.data.attributes.url}`}
                     alt={a.cover.data.attributes.alternativeText}
                     height={600}
                     width={600}
                     style={{
-                      // height: '150px',
-                      // width: '250px',
-                      maxHeight: '150px',
+                      maxHeight: '128px',
                       objectFit: 'cover',
                     }}
                   />
-                </figure>
-              )}
+                ) : (
+                  <div className="h-14 w-full bg-gray-300" />
+                )}
+              </figure>
               <div className="card-body">
                 <div className="card-title">{a.title}</div>
 
