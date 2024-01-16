@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   },
   description:
     'Radioamaterski Izobraževalni Portal Zveze Radioamaterjev Slovenije',
+  creator: 'Jakob Kordež',
+  icons: {
+    icon: '/icons/icon_bg_r.png',
+    shortcut: '/icons/icon_bg_r.png',
+  },
 };
 
 export default function RootLayout({

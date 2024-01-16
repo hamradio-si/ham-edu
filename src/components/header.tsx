@@ -2,6 +2,7 @@
 
 import { faClose, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -51,7 +52,14 @@ export function Header() {
 
   return (
     <header className="flex items-center justify-between bg-secondary px-6 py-4 text-white">
-      <Link href="/" className="text-xl font-semibold">
+      <Link href="/" className="flex items-center gap-3 text-xl font-semibold">
+        <Image
+          className="h-10 w-10"
+          src="/icons/icon_inv.png"
+          alt="Logo"
+          height={40}
+          width={40}
+        />
         Radioamaterski izobraževalni portal
       </Link>
 
