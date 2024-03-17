@@ -2,6 +2,7 @@
 
 import { faClose, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -51,14 +52,14 @@ export function Header() {
 
   return (
     <header className="flex items-center justify-between bg-neutral-800 px-6 py-4 text-white">
-      <Link href="/" className="flex items-center gap-3">
-        {/* <Image
-          className="h-10 w-10"
+      <Link href="/" className="flex items-center gap-4">
+        <Image
+          className="w-1h-12 h-12"
           src="/icons/icon_inv.png"
           alt="Logo"
-          height={40}
-          width={40}
-        />*/}
+          height={48}
+          width={48}
+        />
         <div className="flex flex-col">
           <div className="text-4xl font-bold text-primary">S5 Edu</div>
           <div>Radioamaterski izobraževalni portal</div>
