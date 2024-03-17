@@ -21,24 +21,6 @@ export default async function Home() {
         <button className="btn btn-primary">Vsebine za izpit</button>
       </Hero>
 
-      <div className="section container">
-        <div className="alert mx-auto max-w-3xl">
-          <FontAwesomeIcon icon={faInfoCircle} className="h-6 w-6 text-info" />
-          <div>
-            <h3 className="mb-2 font-bold">Pomoč pri vsebini</h3>
-            <div>
-              Vsebina spletne strani je še v pripravi, zato je zaželeno, da
-              pomagate pri njenem nastajanju. Če želite pomagati pri nastajanju
-              vsebine, nas kontaktirajte na podstrani{' '}
-              <Link href="/kontakt" className="link">
-                Kontakt
-              </Link>
-              .
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="section container flex flex-col gap-4">
         <div className="prose">
           <h2>Najnovejše vsebine</h2>

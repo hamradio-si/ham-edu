@@ -20,9 +20,9 @@ const config: Config = {
     themes: [
       {
         zrs: {
-          primary: '#00adb5',
+          primary: '#38bdf8',
           secondary: '#222831',
-          accent: '#1dcdbc',
+          accent: '#9aeee6',
           neutral: '#393e46',
           'base-100': '#ffffff',
           info: '#3abff8',
