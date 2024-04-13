@@ -5,6 +5,10 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Radioamaterski izpit',
   description: 'Informacije o radioamaterskem izpitu',
+  openGraph: {
+    title: 'Radioamaterski izpit',
+    description: 'Informacije o radioamaterskem izpitu',
+  },
 };
 
 export default async function Izpit() {

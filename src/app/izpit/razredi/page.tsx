@@ -5,6 +5,10 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Razredi radioamaterjev',
   description: 'Premerjava razredov radioamaterjev',
+  openGraph: {
+    title: 'Razredi radioamaterjev',
+    description: 'Premerjava razredov radioamaterjev',
+  },
 };
 
 const classes = [

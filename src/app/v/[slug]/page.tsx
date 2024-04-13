@@ -20,11 +20,26 @@ export async function generateMetadata({
   }
 
   const a = article.attributes;
+  const cover = a.cover.data;
 
   return {
     title: a.title,
     description: a.subtitle ?? a.title,
     authors: a.author ? { name: a.author } : undefined,
+    openGraph: {
+      title: a.title,
+      description: a.subtitle ?? a.title,
+      authors: a.author ? [a.author] : undefined,
+      type: 'article',
+      images: cover
+        ? {
+            url: `${strapiUrl}${cover.attributes.url}`,
+            alt: cover.attributes.alternativeText,
+            height: cover.attributes.height,
+            width: cover.attributes.width,
+          }
+        : undefined,
+    },
   };
 }
 

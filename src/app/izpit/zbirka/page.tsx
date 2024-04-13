@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Zbirka vprašanj',
   description:
     'Zbirka vprašanj, ki se lahko pojavijo na radioamaterskem izpitu',
+  openGraph: {
+    title: 'Zbirka vprašanj',
+    description:
+      'Zbirka vprašanj, ki se lahko pojavijo na radioamaterskem izpitu',
+  },
 };
 
 export default async function QuestionPool() {

@@ -19,6 +19,23 @@ export const metadata: Metadata = {
     icon: '/icons/icon_bg_r.png',
     shortcut: '/icons/icon_bg_r.png',
   },
+  // TODO add real URL
+  metadataBase: new URL('https://edu.jkob.cc/'),
+  openGraph: {
+    type: 'website',
+    locale: 'sl_SI',
+    title: {
+      default: 'Radioamaterski Izobraževalni Portal',
+      template: '%s | Radioamaterski Izobraževalni Portal',
+    },
+    description:
+      'Radioamaterski Izobraževalni Portal Zveze Radioamaterjev Slovenije',
+    images: {
+      url: '/icons/icon_bg_r.png',
+      height: 2903,
+      width: 2903,
+    },
+  },
 };
 
 export default function RootLayout({

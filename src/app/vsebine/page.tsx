@@ -8,6 +8,10 @@ import { CategoryFilter } from './category-filter';
 export const metadata: Metadata = {
   title: 'Vsebine',
   description: 'Poučne vsebine',
+  openGraph: {
+    title: 'Vsebine',
+    description: 'Poučne vsebine',
+  },
 };
 
 export default async function VsebinePage({
