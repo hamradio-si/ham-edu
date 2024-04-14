@@ -1,10 +1,11 @@
 'use client';
 
-import { Category } from '@/interfaces/category.interface';
+// import { Category } from '@/interfaces/category.interface';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 interface CategoryFilterProps {
-  categories: Category[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  categories: any[];
 }
 
 export function CategoryFilter({ categories }: CategoryFilterProps) {
