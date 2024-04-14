@@ -1,4 +1,4 @@
-import { Category } from './category.interface';
+import { Course } from './course.interface';
 
 export interface Article {
   id: number;
@@ -7,7 +7,7 @@ export interface Article {
     slug: string;
     subtitle?: string;
     cover: {
-      data?: {
+      data: {
         id: number;
         attributes: {
           name: string;
@@ -27,12 +27,11 @@ export interface Article {
           created_at: string;
           updated_at: string;
         };
-      };
+      } | null;
     };
     author?: string;
-    in_exam?: boolean;
-    category: {
-      data?: Category;
+    course: {
+      data: Course | null;
     };
     content: string;
     createdAt: string;

@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search } from './search';
-import { CategoryFilter } from './category-filter';
 
 export const metadata: Metadata = {
   title: 'Vsebine',
@@ -24,13 +23,10 @@ export default async function VsebinePage({
     search: searchParams.q,
   };
 
-  const [articles, categories] = await Promise.all([
-    strapiFunctions.getArticles(filter),
-    strapiFunctions.getCategories(),
-  ]);
+  const articles = await strapiFunctions.getArticles(filter);
 
   return (
-    <div className="section container">
+    <div className="section container max-w-screen-md">
       <div className="prose mb-8">
         <h1>Vsebine</h1>
       </div>
@@ -61,14 +57,11 @@ export default async function VsebinePage({
 
                 {a.subtitle && <div className="card-text">{a.subtitle}</div>}
                 <div className="flex items-center gap-2">
-                  {a.category?.data && (
+                  {/* {a.category?.data && (
                     <span className="badge badge-ghost">
                       {a.category.data?.attributes.name}
                     </span>
-                  )}
-                  {a.in_exam && (
-                    <span className="badge badge-primary">V izpitu</span>
-                  )}
+                  )} */}
                 </div>
               </div>
               {a.cover?.data && (
@@ -91,9 +84,9 @@ export default async function VsebinePage({
           ))}
         </div>
 
-        <div className="border-base-200 lg:w-1/3 lg:border-l lg:pl-8">
-          <CategoryFilter categories={categories} />
-        </div>
+        {/* <div className="border-base-200 lg:w-1/3 lg:border-l lg:pl-8">
+          <CategoryFilter categories={categories} /> 
+        </div>*/}
       </div>
     </div>
   );

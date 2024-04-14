@@ -33,29 +33,27 @@ const components = {
 
 export function MDX({ source }: { source: string }) {
   return (
-    <div>
-      <MDXRemote
-        source={source}
-        options={{
-          mdxOptions: {
-            remarkPlugins: [remarkGfm, remarkMath],
-            rehypePlugins: [
-              // @ts-expect-error rehype-katex types are wrong
-              rehypeKatex,
-              rehypeSlug,
-              [
-                rehypeAutolinkHeadings,
-                {
-                  properties: {
-                    className: ['anchor'],
-                  },
+    <MDXRemote
+      source={source}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, remarkMath],
+          rehypePlugins: [
+            // @ts-expect-error rehype-katex types are wrong
+            rehypeKatex,
+            rehypeSlug,
+            [
+              rehypeAutolinkHeadings,
+              {
+                properties: {
+                  className: ['anchor'],
                 },
-              ],
+              },
             ],
-          },
-        }}
-        components={components}
-      />
-    </div>
+          ],
+        },
+      }}
+      components={components}
+    />
   );
 }

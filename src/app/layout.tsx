@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Radioamaterski Izobraževalni Portal',
-    template: '%s | Radioamaterski Izobraževalni Portal',
+    default: 'Radioamaterski izobraževalni portal',
+    template: '%s | Radioamaterski izobraževalni portal',
   },
   description:
-    'Radioamaterski Izobraževalni Portal Zveze Radioamaterjev Slovenije',
+    'Radioamaterski izobraževalni portal Zveze Radioamaterjev Slovenije',
   creator: 'Jakob Kordež',
   icons: {
     icon: '/icons/icon_bg_r.png',
@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'sl_SI',
     title: {
-      default: 'Radioamaterski Izobraževalni Portal',
-      template: '%s | Radioamaterski Izobraževalni Portal',
+      default: 'Radioamaterski izobraževalni portal',
+      template: '%s | Radioamaterski izobraževalni portal',
     },
     description:
-      'Radioamaterski Izobraževalni Portal Zveze Radioamaterjev Slovenije',
+      'Radioamaterski izobraževalni portal Zveze Radioamaterjev Slovenije',
     images: {
       url: '/icons/icon_bg_r.png',
       height: 2903,

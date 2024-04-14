@@ -2,6 +2,7 @@ import { strapiFunctions, strapiUrl } from '@/api';
 import { MDX } from '@/components/mdx';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 interface ArticlePageProps {
@@ -13,23 +14,22 @@ interface ArticlePageProps {
 export async function generateMetadata({
   params: { slug },
 }: ArticlePageProps): Promise<Metadata> {
-  const article = await strapiFunctions.getArticleBySlug(slug);
+  const article = (await strapiFunctions.getArticleBySlug(slug))?.attributes;
 
   if (!article) {
     throw new Error('Article not found');
   }
 
-  const a = article.attributes;
-  const cover = a.cover.data;
+  const cover = article.cover.data;
 
   return {
-    title: a.title,
-    description: a.subtitle ?? a.title,
-    authors: a.author ? { name: a.author } : undefined,
+    title: article.title,
+    description: article.subtitle,
+    authors: article.author ? { name: article.author } : undefined,
     openGraph: {
-      title: a.title,
-      description: a.subtitle ?? a.title,
-      authors: a.author ? [a.author] : undefined,
+      title: article.title,
+      description: article.subtitle,
+      authors: article.author,
       type: 'article',
       images: cover
         ? {
@@ -58,39 +58,72 @@ export default async function ArticlePage({
     notFound();
   }
 
+  const course = article.course.data?.attributes;
+
   return (
-    <article className="section container prose">
-      {article.cover.data && (
-        <figure className="rounded-none">
-          <Image
-            src={`${strapiUrl}${article.cover.data.attributes.url}`}
-            alt={article.cover.data.attributes.alternativeText}
-            height={1024}
-            width={1024}
-            style={{
-              maxHeight: '300px',
-              width: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </figure>
+    <div className="section container flex flex-row-reverse justify-center gap-10">
+      {course && (
+        <div className="sticky top-10 mb-auto hidden border-l py-2 pl-4 md:block">
+          <ol className="flex flex-col gap-2">
+            <li>
+              <Link
+                href={`/tecaji/${course.slug}`}
+                className="btn no-animation btn-sm btn-block h-auto min-h-0 justify-start py-3 text-left"
+              >
+                {course.title}
+              </Link>
+            </li>
+            <li>
+              <ol className="ml-4 flex flex-col gap-2">
+                {course.articles?.data.map((a) => (
+                  <li key={a.id}>
+                    <Link
+                      href={`/v/${a.attributes.slug}`}
+                      className={`btn no-animation btn-sm btn-block h-auto min-h-0 justify-start py-3 text-left ${a.attributes.slug === slug ? 'btn-primary' : 'btn-ghost'}`}
+                    >
+                      {a.attributes.title}
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </li>
+          </ol>
+        </div>
       )}
 
-      <div className="mb-8">
-        <h1 className="mb-2">{article.title}</h1>
+      <article className="prose">
+        {article.cover.data && (
+          <figure className="rounded-none">
+            <Image
+              src={`${strapiUrl}${article.cover.data.attributes.url}`}
+              alt={article.cover.data.attributes.alternativeText}
+              height={1024}
+              width={1024}
+              style={{
+                maxHeight: '300px',
+                width: '100%',
+                objectFit: 'cover',
+              }}
+            />
+          </figure>
+        )}
 
-        {article.subtitle && <p className="my-2">{article.subtitle}</p>}
-        <div className="flex items-center gap-2">
-          <span className="badge badge-ghost">
-            {article.category.data?.attributes.name}
-          </span>
-          {article.in_exam && (
-            <span className="badge badge-primary">V izpitu</span>
+        <div className="mb-8">
+          <h1 className="mb-2">{article.title}</h1>
+
+          {article.subtitle && (
+            <p className="my-2 text-lg">{article.subtitle}</p>
           )}
+          {/* <div className="flex items-center gap-2">
+            <span className="badge badge-ghost">{course?.title}</span>
+            {article.in_exam && (
+              <span className="badge badge-primary">V izpitu</span>
+            )}
+          </div> */}
         </div>
-      </div>
 
-      <MDX source={article.content} />
-    </article>
+        <MDX source={article.content} />
+      </article>
+    </div>
   );
 }

@@ -9,6 +9,10 @@ import { useState } from 'react';
 
 const links = [
   {
+    title: 'Tečaji',
+    href: '/tecaji',
+  },
+  {
     title: 'Vsebine',
     href: '/vsebine',
   },
@@ -48,7 +52,8 @@ const links = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  if (pathname?.startsWith('/tecaji/')) pathname = '/tecaji';
 
   return (
     <header className="flex items-center justify-between bg-neutral-800 px-6 py-4 text-white">
@@ -97,7 +102,9 @@ export function Header() {
 }
 
 function BurgerMenu() {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  if (pathname?.startsWith('/tecaji/')) pathname = '/tecaji';
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -178,7 +185,9 @@ function Dropdown({
   links: { title: string; href: string }[];
   title: string;
 }) {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  if (pathname?.startsWith('/tecaji/')) pathname = '/tecaji';
+
   const [isOpen, setIsOpen] = useState(0);
 
   return (

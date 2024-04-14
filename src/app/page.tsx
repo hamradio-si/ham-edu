@@ -11,12 +11,19 @@ export default async function Home() {
       <Hero image="/ef8r.jpg" className="min-h-[500px]">
         <h1 className="mb-5 text-3xl font-bold md:text-4xl">Pozdravljen</h1>
         <p className="mb-5">
-          Dobrodošel na Radioamaterskem Izobraževalnem Portalu Zveze
+          Dobrodošel na Radioamaterskem izobraževalnem portalu Zveze
           Radioamaterjev Slovenije. Na tem portalu lahko najdeš vsebine, ki
           pomagajo pri pripravi na radioamaterski izpit ali pa samo želiš
           izvedeti kaj več o radioamaterstvu.
         </p>
-        <button className="btn btn-primary">Vsebine za izpit</button>
+        <div className="flex gap-3">
+          <Link className="btn btn-primary" href="/tecaji">
+            Tečaji
+          </Link>
+          <Link className="btn btn-primary" href="/vsebine">
+            Ostale vsebine
+          </Link>
+        </div>
       </Hero>
 
       <div className="section container flex flex-col gap-4">
