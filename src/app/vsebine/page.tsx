@@ -76,7 +76,7 @@ export default async function VsebinePage({
                       // width: '250px',
                       objectFit: 'cover',
                     }}
-                    className="h-40 w-full rounded md:w-64"
+                    className="h-36 w-full rounded md:w-64"
                   />
                 </figure>
               )}

@@ -19,8 +19,7 @@ export const metadata: Metadata = {
     icon: '/icons/icon_bg_r.png',
     shortcut: '/icons/icon_bg_r.png',
   },
-  // TODO add real URL
-  metadataBase: new URL('https://edu.jkob.cc/'),
+  metadataBase: new URL(process.env.WEBSITE_URL || 'http://localhost:3000'),
   openGraph: {
     type: 'website',
     locale: 'sl_SI',

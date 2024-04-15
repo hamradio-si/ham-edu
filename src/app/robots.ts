@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://edu.jkob.cc/sitemap.xml',
+    sitemap: `${process.env.WEBSITE_URL || 'http://localhost:3000'}/sitemap.xml`,
   };
 }

@@ -11,7 +11,7 @@ export const strapiFunctions = {
     const cat = filter?.category;
     const search = filter?.search;
     const res = await fetch(
-      `${strapiUrl}/api/articles?populate=*${
+      `${strapiUrl}/api/articles?populate=*&sort=publishedAt:desc${
         cat ? `&filters[category][id]=${cat}` : ''
       }${search ? `&filters[title][$containsi]=${search}` : ''}`,
     );

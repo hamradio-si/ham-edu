@@ -2,7 +2,7 @@ import { strapiFunctions } from '@/api';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://edu.jkob.cc';
+  const baseUrl = process.env.WEBSITE_URL || 'http://localhost:3000';
 
   const pages1 = [
     '/izpit',
