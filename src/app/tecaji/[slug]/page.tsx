@@ -31,6 +31,12 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const courses = await strapiFunctions.getAllCourses();
+
+  return courses.map((c) => ({ slug: c.attributes.slug }));
+}
+
 export default async function CoursesPage({
   params: { slug },
 }: CoursePageProps) {
