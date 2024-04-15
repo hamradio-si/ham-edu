@@ -18,6 +18,11 @@ STRAPI_URL=http://localhost:1337
 
 ## TODO
 
+- [x] Tečaji
+  - [x] Online tečaji
+  - [ ] Posneti tečaji
+  - [ ] Tečaji v živo
+  - [ ] Uvajanje / začetki radioamaterstva
 - [ ] Pagination
 - [ ] Iskanje po vsebini
 - [x] Zbirka vprašanj
@@ -26,9 +31,13 @@ STRAPI_URL=http://localhost:1337
   - [ ] Filter
 - [x] Simulator izpita
 - [ ] Scroll to top button
-- [ ] Footer
+- [x] Footer
 - [ ] Revalidate API
 - [ ] Analytics
-- [ ] SEO (Metadata, OpenGraph, Twitter, JSON-LD)
-- [ ] Sitemap, robots.txt
+- [x] SEO
+  - [x] Metadata
+  - [x] OpenGraph
+  - [ ] Twitter
+  - [ ] JSON-LD ?
+- [x] Sitemap, robots.txt
 - [ ] PWA ??

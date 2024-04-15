@@ -18,6 +18,13 @@ export const strapiFunctions = {
     const data = await res.json();
     return data.data;
   },
+  getAllArticles: async (): Promise<Article[]> => {
+    const res = await fetch(
+      `${strapiUrl}/api/articles?pagination[pageSize]=1000&fields[0]=slug&fields[1]=updatedAt`,
+    );
+    const data = await res.json();
+    return data.data;
+  },
   getArticleById: async (id: number): Promise<Article> => {
     const res = await fetch(`${strapiUrl}/api/articles/${id}?populate=*`);
     const data = await res.json();
@@ -33,6 +40,13 @@ export const strapiFunctions = {
   getRootCourses: async (): Promise<Course[]> => {
     const res = await fetch(
       `${strapiUrl}/api/courses?populate[subcourses]=*&populate[articles][fields][0]=title&populate[articles][fields][1]=slug&filters[parent][id][$null]=true`,
+    );
+    const data = await res.json();
+    return data.data;
+  },
+  getAllCourses: async (): Promise<Course[]> => {
+    const res = await fetch(
+      `${strapiUrl}/api/courses?pagination[pageSize]=1000`,
     );
     const data = await res.json();
     return data.data;
