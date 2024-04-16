@@ -77,10 +77,10 @@ function Answer({
         !isSelected
           ? ''
           : !reveal
-          ? 'border-primary bg-primary/30 hover:border-primary hover:bg-primary/30'
-          : isCorrect
-          ? 'border-success bg-success/30 text-success-content hover:border-success hover:bg-success/30 hover:text-success-content'
-          : 'border-error bg-error/30 text-error-content hover:border-error hover:bg-error/30 hover:text-error-content'
+            ? 'border-primary bg-primary/30 hover:border-primary hover:bg-primary/30'
+            : isCorrect
+              ? 'border-success bg-success/30 text-success-content hover:border-success hover:bg-success/30 hover:text-success-content'
+              : 'border-error bg-error/30 text-error-content hover:border-error hover:bg-error/30 hover:text-error-content'
       } ${!onClick ? 'no-animation' : ''}`}
       onClick={onClick}
     >

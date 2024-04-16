@@ -20,6 +20,7 @@ export function Search() {
         } else {
           url.searchParams.delete('q');
         }
+        url.searchParams.delete('p');
 
         router.replace(url.toString());
       }, 500),

@@ -1,22 +1,19 @@
 import { Article } from './interfaces/article.interface';
 import { Course } from './interfaces/course.interface';
+import { Paginated } from './interfaces/paginated.interface';
 
 export const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337';
 
 export const strapiFunctions = {
-  getArticles: async (filter?: {
-    category?: number;
+  getArticles: async (params?: {
     search?: string;
-  }): Promise<Article[]> => {
-    const cat = filter?.category;
-    const search = filter?.search;
+    page?: number;
+  }): Promise<Paginated<Article>> => {
+    const { search, page } = params || {};
     const res = await fetch(
-      `${strapiUrl}/api/articles?populate=*&sort=publishedAt:desc${
-        cat ? `&filters[category][id]=${cat}` : ''
-      }${search ? `&filters[title][$containsi]=${search}` : ''}`,
+      `${strapiUrl}/api/articles?populate=*&sort=publishedAt:desc${search ? `&filters[title][$containsi]=${search}` : ''}&pagination[page]=${page || 1}`,
     );
-    const data = await res.json();
-    return data.data;
+    return await res.json();
   },
   getAllArticles: async (): Promise<Article[]> => {
     const res = await fetch(

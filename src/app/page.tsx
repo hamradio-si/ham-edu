@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function Home() {
-  const vsebine = await strapiFunctions.getArticles();
+  const { data: vsebine } = await strapiFunctions.getArticles();
 
   return (
     <>
@@ -51,7 +51,17 @@ export default async function Home() {
                     }}
                   />
                 ) : (
-                  <div className="h-14 w-full bg-gray-300" />
+                  <Image
+                    src="/icons/icon_inv.png"
+                    alt="Brez slike"
+                    height={600}
+                    width={600}
+                    style={{
+                      maxHeight: '128px',
+                      objectFit: 'contain',
+                    }}
+                    className="bg-gray-300 p-4"
+                  />
                 )}
               </figure>
               <div className="card-body">

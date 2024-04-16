@@ -83,7 +83,7 @@ export default function CallsignTool() {
         <label className="text-sm font-semibold">Vnesi klicni znak</label>
         <input
           type="text"
-          className={`input input-bordered input-lg text-center text-3xl uppercase placeholder:font-sans placeholder:normal-case ${robotoMono.className}`}
+          className={`input input-lg input-bordered text-center text-3xl uppercase placeholder:font-sans placeholder:normal-case ${robotoMono.className}`}
           value={callsign}
           onChange={(e) => setCallsign(e.target.value)}
           placeholder='npr. "S50HQ"'

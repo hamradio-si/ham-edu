@@ -23,7 +23,7 @@ STRAPI_URL=http://localhost:1337
   - [ ] Posneti tečaji
   - [ ] Tečaji v živo
   - [ ] Uvajanje / začetki radioamaterstva
-- [ ] Pagination
+- [x] Pagination
 - [ ] Iskanje po vsebini
 - [x] Zbirka vprašanj
   - [ ] Pagination

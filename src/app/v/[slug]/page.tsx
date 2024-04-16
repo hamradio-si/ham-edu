@@ -44,7 +44,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const articles = await strapiFunctions.getArticles();
+  const articles = await strapiFunctions.getAllArticles();
 
   return articles.map((a) => ({ slug: a.attributes.slug }));
 }

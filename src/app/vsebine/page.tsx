@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search } from './search';
+import { PageNumber } from './page-number';
 
 export const metadata: Metadata = {
   title: 'Vsebine',
@@ -16,14 +17,17 @@ export const metadata: Metadata = {
 export default async function VsebinePage({
   searchParams,
 }: {
-  searchParams: { c?: string; q?: string };
+  searchParams: { p?: string; q?: string };
 }) {
-  const filter = {
-    category: searchParams.c ? +searchParams.c : undefined,
-    search: searchParams.q,
-  };
+  const page = +(searchParams.p || 1);
 
-  const articles = await strapiFunctions.getArticles(filter);
+  const {
+    data: articles,
+    meta: { pagination },
+  } = await strapiFunctions.getArticles({
+    page: +page,
+    search: searchParams.q,
+  });
 
   return (
     <div className="section container max-w-screen-md">
@@ -46,42 +50,59 @@ export default async function VsebinePage({
             </div>
           )}
 
-          {articles.map(({ attributes: a }) => (
-            <Link
-              key={a.slug}
-              href={`/v/${a.slug}`}
-              className="flex w-full flex-col gap-8 overflow-clip border-b border-base-200 px-6 py-8 md:flex-row lg:last:border-0"
-            >
-              <div className="flex flex-1 flex-col gap-2">
-                <div className="card-title">{a.title}</div>
+          <div>
+            {articles.map(({ attributes: a }) => (
+              <Link
+                key={a.slug}
+                href={`/v/${a.slug}`}
+                className="flex w-full flex-col-reverse gap-6 overflow-clip border-b border-base-200 px-6 py-8 last:border-0 md:flex-row md:gap-8"
+              >
+                <div className="flex flex-1 flex-col gap-2">
+                  <div className="card-title">{a.title}</div>
 
-                {a.subtitle && <div className="card-text">{a.subtitle}</div>}
-                <div className="flex items-center gap-2">
-                  {/* {a.category?.data && (
+                  {a.subtitle && <div className="card-text">{a.subtitle}</div>}
+                  <div className="flex items-center gap-2">
+                    {/* {a.category?.data && (
                     <span className="badge badge-ghost">
                       {a.category.data?.attributes.name}
                     </span>
                   )} */}
+                  </div>
                 </div>
-              </div>
-              {a.cover?.data && (
                 <figure>
-                  <Image
-                    src={`${strapiUrl}${a.cover.data.attributes.url}`}
-                    alt={a.cover.data.attributes.alternativeText}
-                    height={500}
-                    width={500}
-                    style={{
-                      // height: '150px',
-                      // width: '250px',
-                      objectFit: 'cover',
-                    }}
-                    className="h-36 w-full rounded md:w-64"
-                  />
+                  {a.cover?.data ? (
+                    <Image
+                      src={`${strapiUrl}${a.cover.data.attributes.url}`}
+                      alt={a.cover.data.attributes.alternativeText}
+                      height={500}
+                      width={500}
+                      style={{
+                        // height: '150px',
+                        // width: '250px',
+                        objectFit: 'cover',
+                      }}
+                      className="h-36 w-full rounded md:w-64"
+                    />
+                  ) : (
+                    <Image
+                      src="/icons/icon_inv.png"
+                      alt="Brez slike"
+                      height={500}
+                      width={500}
+                      style={{
+                        // height: '150px',
+                        // width: '250px',
+                        objectFit: 'contain',
+                      }}
+                      className="h-36 w-full rounded bg-gray-300 p-4 md:w-64"
+                    />
+                  )}
                 </figure>
-              )}
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
+
+          <PageNumber pagination={pagination} />
         </div>
 
         {/* <div className="border-base-200 lg:w-1/3 lg:border-l lg:pl-8">
