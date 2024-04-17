@@ -2,19 +2,36 @@
 
 Next.js + Strapi spleta stran za izobraževanje radioamaterjev in kandidatov za radioamaterski izpit.
 
-## Zaženi lokalno
+## Zaženi "development" okolje
 
 ```bash
 yarn dev
 ```
 
-## Environment variables
+## Zaženi "production" okolje
+
+```bash
+yarn build
+yarn start
+```
+
+## Okoljske spremenljivke
 
 File: `.env.local`
 
 ```
-STRAPI_URL=http://localhost:1337
+WEBSITE_URL=https://edu.jkob.cc
+STRAPI_URL=https://strapi.jkob.cc
+STRAPI_TOKEN=...
 ```
+
+## Priprava Strapi Webhooka
+
+- Pojdi na `[STRAPI_URL]/admin/settings/webhooks`
+- Dodaj nov webhook
+- URL: `[WEBSITE_URL]/api/strapi`
+- Headers: `Authorization: Bearer [STRAPI_TOKEN]`
+- Events: `entry.create`, `entry.update`, `entry.delete`, `entry.publish`, `entry.unpublish`
 
 ## TODO
 
@@ -32,7 +49,7 @@ STRAPI_URL=http://localhost:1337
 - [x] Simulator izpita
 - [ ] Scroll to top button
 - [x] Footer
-- [ ] Revalidate API
+- [x] Revalidate API + Webhook
 - [ ] Analytics
 - [x] SEO
   - [x] Metadata

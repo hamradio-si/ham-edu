@@ -21,6 +21,9 @@ export function Footer() {
       </aside>
       <nav>
         <header className="footer-title">Kazalo</header>
+        <Link href="/tecaji" className="link-hover link">
+          Tečaji
+        </Link>
         <Link href="/vsebine" className="link-hover link">
           Vsebine
         </Link>
