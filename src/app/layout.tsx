@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     'Radioamaterski izobraževalni portal Zveze Radioamaterjev Slovenije',
+  keywords: ['radioamater', 'radioamaterstvo', 'tečaj', 'izpit', 'vaje'],
   creator: 'Jakob Kordež',
   icons: {
     icon: '/icons/icon_bg_r.png',
@@ -30,10 +31,19 @@ export const metadata: Metadata = {
     },
     description:
       'Radioamaterski izobraževalni portal Zveze Radioamaterjev Slovenije',
+    siteName: 'Radioamaterski izobraževalni portal',
     images: {
       url: '/icons/icon_bg_r.png',
       height: 2903,
       width: 2903,
+    },
+  },
+  robots: {
+    follow: true,
+    index: true,
+    googleBot: {
+      index: true,
+      follow: true,
     },
   },
 };
