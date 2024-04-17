@@ -1,4 +1,4 @@
-import QuestionCard from '@/components/question_card';
+import QuestionCard from '@/components/question-card';
 import { Metadata } from 'next';
 import questionFile from '@/../public/questions.json';
 import { QuestionFile } from '@/interfaces/question.interface';

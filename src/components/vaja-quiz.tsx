@@ -4,7 +4,7 @@ import { QCategory, Question } from '@/interfaces/question.interface';
 import { getCategories, getQuestions } from '@/util/question-util';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import QuestionCard from '@/components/question_card';
+import QuestionCard from '@/components/question-card';
 
 const qPerPage = 5;
 

@@ -5,8 +5,8 @@ import { StartForm } from './start_form';
 import { getExamQuestions } from '@/util/question-util';
 import { scrollToTop } from '@/util/scroll-util';
 import { Question } from '@/interfaces/question.interface';
-import { ExamInProgress } from './exam_in_progress';
-import { ExamResults } from './exam_results';
+import { ExamInProgress } from './exam-in-progress';
+import { ExamResults } from './exam-results';
 
 enum QuizState {
   Loading,

@@ -1,4 +1,4 @@
-import QuestionCard from '@/components/question_card';
+import QuestionCard from '@/components/question-card';
 import { Question } from '@/interfaces/question.interface';
 import { useEffect, useState } from 'react';
 
