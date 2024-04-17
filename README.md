@@ -47,7 +47,7 @@ STRAPI_TOKEN=...
   - [ ] Search
   - [ ] Filter
 - [x] Simulator izpita
-- [ ] Scroll to top button
+- [x] Scroll to top button
 - [x] Footer
 - [x] Revalidate API + Webhook
 - [ ] Analytics

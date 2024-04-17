@@ -63,7 +63,7 @@ export default async function ArticlePage({
   return (
     <div className="section container flex flex-row-reverse justify-center gap-10">
       {course && (
-        <div className="sticky top-10 mb-auto hidden border-l py-2 pl-4 md:block">
+        <div className="sticky top-10 mb-auto hidden border-l border-base-200 py-2 pl-4 md:block">
           <ol className="flex flex-col gap-2">
             <li>
               <Link
