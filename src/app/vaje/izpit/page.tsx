@@ -7,6 +7,7 @@ import { scrollToTop } from '@/util/scroll-util';
 import { Question } from '@/interfaces/question.interface';
 import { ExamInProgress } from './exam-in-progress';
 import { ExamResults } from './exam-results';
+import { umamiTrack } from '@/components/umami-analytics';
 
 enum QuizState {
   Loading,
@@ -27,7 +28,7 @@ interface IzpitQuizStore {
   reset: () => void;
 }
 
-const useExamStore = create<IzpitQuizStore>((set) => ({
+const useExamStore = create<IzpitQuizStore>((set, get) => ({
   state: QuizState.Ready,
 
   questions: undefined,
@@ -51,6 +52,15 @@ const useExamStore = create<IzpitQuizStore>((set) => ({
   },
 
   finish: () => {
+    const { questions, answers } = get();
+    const incorrect = questions!.filter((q, qi) => q.correct !== answers![qi]);
+    const correctPercent =
+      Math.round((1 - incorrect.length / answers!.length) * 1000) / 10;
+
+    umamiTrack('exam_finished', {
+      correctPercent,
+      incorrect: incorrect.map((q) => q.id).join(','),
+    });
     set({
       state: QuizState.Finished,
     });

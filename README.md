@@ -23,6 +23,8 @@ File: `.env.local`
 WEBSITE_URL=https://edu.jkob.cc
 STRAPI_URL=https://strapi.jkob.cc
 STRAPI_TOKEN=...
+NEXT_PUBLIC_ANALYTICS_URL=http://umami.jkob.cc/script.js
+NEXT_PUBLIC_ANALYTICS_ID=...
 ```
 
 ## Priprava Strapi Webhooka
@@ -50,7 +52,7 @@ STRAPI_TOKEN=...
 - [x] Scroll to top button
 - [x] Footer
 - [x] Revalidate API + Webhook
-- [ ] Analytics
+- [x] Analytics
 - [x] SEO
   - [x] Metadata
   - [x] OpenGraph

@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import { Footer } from '@/components/footer';
 import { morse } from '@/fonts/fonts';
 import { ScrollToTopButton } from '@/components/scroll-to-top-button';
+import { UmamiAnalytics } from '@/components/umami-analytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -64,6 +65,8 @@ export default function RootLayout({
         </div>
 
         <Footer />
+
+        <UmamiAnalytics />
       </body>
     </html>
   );
