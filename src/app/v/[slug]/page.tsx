@@ -1,5 +1,7 @@
 import { strapiFunctions, strapiUrl } from '@/api';
 import { MDX } from '@/components/mdx';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -67,10 +69,11 @@ export default async function ArticlePage({
           <ol className="flex flex-col gap-2">
             <li>
               <Link
-                href={`/tecaji/${course.slug}`}
+                href={`/tecaji/${course.slug ?? ''}`}
                 className="btn no-animation btn-sm btn-block h-auto min-h-0 justify-start py-3 text-left"
               >
-                {course.title}
+                <FontAwesomeIcon icon={faAngleUp} height={18} width={16} />
+                <span>{course.title}</span>
               </Link>
             </li>
             <li>

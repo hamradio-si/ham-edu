@@ -4,7 +4,11 @@ export function Footer() {
   return (
     <footer className="footer bg-base-200 p-10 text-base-content">
       <aside>
-        <Link
+        <div className="mb-2">
+          <div className="text-4xl font-bold text-primary">S5 Edu</div>
+          <div>Radioamaterski izobraževalni portal</div>
+        </div>
+        {/* <Link
           target="_blank"
           className="text-lg font-medium"
           href="https://www.hamradio.si/"
@@ -17,7 +21,7 @@ export function Footer() {
           2341 Limbuš
           <br />
           SLOVENIJA
-        </p>
+        </p> */}
       </aside>
       <nav>
         <header className="footer-title">Kazalo</header>

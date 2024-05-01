@@ -1,5 +1,6 @@
 import { Article } from './interfaces/article.interface';
 import { Course } from './interfaces/course.interface';
+import { Page } from './interfaces/page.interface';
 import { Paginated } from './interfaces/paginated.interface';
 
 export const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337';
@@ -34,13 +35,6 @@ export const strapiFunctions = {
     const data = await res.json();
     return data.data[0];
   },
-  getRootCourses: async (): Promise<Course[]> => {
-    const res = await fetch(
-      `${strapiUrl}/api/courses?populate[subcourses]=*&populate[articles][fields][0]=title&populate[articles][fields][1]=slug&filters[parent][id][$null]=true`,
-    );
-    const data = await res.json();
-    return data.data;
-  },
   getAllCourses: async (): Promise<Course[]> => {
     const res = await fetch(
       `${strapiUrl}/api/courses?pagination[pageSize]=1000`,
@@ -48,16 +42,24 @@ export const strapiFunctions = {
     const data = await res.json();
     return data.data;
   },
-  getCourseBySlug: async (slug: string): Promise<Course> => {
+  getCourseBySlug: async (slug?: string): Promise<Course> => {
+    const slg = slug ? `=${slug}` : '[$null]=true';
     const res = await fetch(
-      `${strapiUrl}/api/courses?filters[slug]=${slug}&populate[parent]=*&populate[subcourses]=*&populate[articles][fields][0]=title&populate[articles][fields][1]=slug`,
+      `${strapiUrl}/api/courses?filters[slug]${slg}&populate[parent]=*&populate[subcourses]=*&populate[articles][fields][0]=title&populate[articles][fields][1]=slug`,
     );
     const data = await res.json();
     return data.data[0];
   },
-  getExamPage: async (): Promise<string> => {
-    const res = await fetch(`${strapiUrl}/api/exam`);
+  getAllPages: async (): Promise<Page[]> => {
+    const res = await fetch(
+      `${strapiUrl}/api/pages?pagination[pageSize]=1000&fields[0]=slug&fields[1]=updatedAt`,
+    );
     const data = await res.json();
-    return data.data.attributes.content;
+    return data.data;
+  },
+  getPageBySlug: async (slug: string): Promise<Page> => {
+    const res = await fetch(`${strapiUrl}/api/pages?filters[slug]=${slug}`);
+    const data = await res.json();
+    return data.data[0];
   },
 };
