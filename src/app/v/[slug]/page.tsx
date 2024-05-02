@@ -45,6 +45,8 @@ export async function generateMetadata({
   };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const articles = await strapiFunctions.getAllArticles();
 

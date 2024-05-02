@@ -28,6 +28,8 @@ export async function generateMetadata({
   };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const pages = await strapiFunctions.getAllPages();
 

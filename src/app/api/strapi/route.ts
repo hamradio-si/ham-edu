@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
 
   if (!event.event.startsWith('entry.')) return new Response('OK');
 
+  // Revalidate article
   if (event.model === 'article') {
     const article = event.entry as { slug: string; course?: { slug: string } };
 
@@ -30,6 +31,7 @@ export async function POST(request: NextRequest) {
     revalidatePath('/');
   }
 
+  // Revalidate course
   if (event.model === 'course') {
     const course = event.entry as {
       slug: string;
@@ -53,6 +55,12 @@ export async function POST(request: NextRequest) {
     course.articles?.forEach((article: { slug: string }) => {
       revalidatePath(`/v/${article.slug}`);
     });
+  }
+
+  // Revalidate page
+  if (event.model === 'page') {
+    const slug = event.entry.slug as string;
+    revalidatePath(`/${slug}`);
   }
 
   return new Response('OK');
