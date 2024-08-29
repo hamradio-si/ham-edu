@@ -1,8 +1,8 @@
 'use client';
 
+import { Logo } from '@/assets';
 import { faClose, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -56,17 +56,11 @@ export function Header() {
   if (pathname?.startsWith('/tecaji/')) pathname = '/tecaji';
 
   return (
-    <header className="flex items-center justify-between bg-neutral-800 px-6 py-4 text-white">
+    <header className="flex items-center justify-between bg-neutral px-6 py-4 text-white">
       <Link href="/" className="flex items-center gap-4">
-        <Image
-          className="w-1h-12 h-12"
-          src="/icons/icon_inv.png"
-          alt="Logo"
-          height={48}
-          width={48}
-        />
+        <Logo className="h-12 w-12" />
         <div className="flex flex-col">
-          <div className="text-4xl font-bold text-primary">S5 Edu</div>
+          <div className="text-4xl font-bold text-accent">S5 Edu</div>
           <div>Radioamaterski izobraževalni portal</div>
         </div>
       </Link>

@@ -20,11 +20,13 @@ const config: Config = {
     themes: [
       {
         zrs: {
-          primary: '#38bdf8',
+          primary: '#0896D4',
+          'primary-content': '#ffffff',
           secondary: '#222831',
-          accent: '#9aeee6',
-          neutral: '#393e46',
+          accent: '#38BDF8',
+          neutral: '#22272f',
           'base-100': '#ffffff',
+          'base-200': '#f6f6f6',
           info: '#3abff8',
           success: '#36d399',
           warning: '#fbbd23',

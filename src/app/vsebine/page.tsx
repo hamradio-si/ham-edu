@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Search } from './search';
 import { PageNumber } from './page-number';
+import { Logo } from '@/assets';
 
 export const metadata: Metadata = {
   title: 'Vsebine',
@@ -84,18 +85,7 @@ export default async function VsebinePage({
                       className="h-36 w-full rounded md:w-64"
                     />
                   ) : (
-                    <Image
-                      src="/icons/icon_inv.png"
-                      alt="Brez slike"
-                      height={500}
-                      width={500}
-                      style={{
-                        // height: '150px',
-                        // width: '250px',
-                        objectFit: 'contain',
-                      }}
-                      className="h-36 w-full rounded bg-gray-300 p-4 md:w-64"
-                    />
+                    <Logo className="h-36 w-full rounded bg-base-200 p-4 text-base-300 md:w-64" />
                   )}
                 </figure>
               </Link>

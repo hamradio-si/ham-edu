@@ -1,4 +1,5 @@
 import { strapiFunctions, strapiUrl } from '@/api';
+import { Logo } from '@/assets';
 import { Hero } from '@/components/hero';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -26,17 +27,17 @@ export default async function Home() {
         </div>
       </Hero>
 
-      <div className="section container flex flex-col gap-4">
+      <div className="section container flex flex-col gap-8">
         <div className="prose">
           <h2>Najnovejše vsebine</h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {vsebine.slice(0, 6).map(({ attributes: a }) => (
             <Link
               key={a.slug}
               href={`/v/${a.slug}`}
-              className="card flex-1 shadow-lg transition-all hover:shadow-xl"
+              className="flex-1 transition-all"
             >
               <figure>
                 {a.cover.data ? (
@@ -49,25 +50,18 @@ export default async function Home() {
                       maxHeight: '128px',
                       objectFit: 'cover',
                     }}
+                    className="rounded-lg"
                   />
                 ) : (
-                  <Image
-                    src="/icons/icon_inv.png"
-                    alt="Brez slike"
-                    height={600}
-                    width={600}
-                    style={{
-                      maxHeight: '128px',
-                      objectFit: 'contain',
-                    }}
-                    className="bg-gray-300 p-4"
-                  />
+                  <Logo className="max-h-32 w-full rounded-lg bg-base-200 p-4 text-base-300" />
                 )}
               </figure>
-              <div className="card-body">
+              <div className="card-body px-2 py-4">
                 <div className="card-title">{a.title}</div>
 
-                {a.subtitle && <div className="card-text">{a.subtitle}</div>}
+                {a.subtitle && (
+                  <div className="card-text opacity-80">{a.subtitle}</div>
+                )}
               </div>
             </Link>
           ))}

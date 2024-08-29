@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="footer bg-base-200 p-10 text-base-content">
       <aside>
-        <div className="mb-2">
+        <div>
           <div className="text-4xl font-bold text-primary">S5 Edu</div>
           <div>Radioamaterski izobraževalni portal</div>
         </div>
@@ -44,7 +44,7 @@ export function Footer() {
       <nav>
         <header className="footer-title">Zunanje povezave</header>
         <Link href="https://www.hamradio.si/" className="link-hover link">
-          Spletna stran ZRS
+          Zveza Radioamaterjev Slovenije
         </Link>
         <Link
           target="_blank"

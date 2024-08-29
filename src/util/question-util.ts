@@ -18,24 +18,13 @@ const openFile = async (): Promise<QuestionFile> => {
 export const getQuestions = async (): Promise<Question[]> => {
   const file = await openFile();
 
-  return file.questions.map((question) => ({
-    id: question.id,
-    question: question.question,
-    image: question.image,
-    answers: question.answers,
-    correct: question.correct,
-    category: question.category,
-  }));
+  return file.questions;
 };
 
 export const getCategories = async (): Promise<QCategory[]> => {
   const file = await openFile();
 
-  return file.categories.map((category) => ({
-    id: category.id,
-    title: category.title,
-    // questions: category.questions,
-  }));
+  return file.categories;
 };
 
 export const getExamQuestions = async (

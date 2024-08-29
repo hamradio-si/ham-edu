@@ -87,11 +87,11 @@ export default function VajaQuiz() {
         <label htmlFor="category" className="mb-2 block font-medium">
           Izberi kategorijo
         </label>
-        <div className="flex flex-row flex-wrap gap-3">
+        <div className="flex w-full flex-col gap-3 sm:flex-row">
           <select
             id="category"
             name="category"
-            className="select select-bordered w-full flex-1 sm:w-auto"
+            className="select select-bordered w-full flex-1"
             value={selectedCategory}
             onChange={(e) => {
               const selectedCategory = e.target.value;
@@ -102,13 +102,14 @@ export default function VajaQuiz() {
             <option value="all">Vse kategorije</option>
             {categories.map((category, i) => (
               <option key={i} value={category.id}>
+                {category.id % 100 != 0 && <>&nbsp;&nbsp;</>}
                 {category.title}
               </option>
             ))}
           </select>
 
           <button
-            className="btn btn-primary w-full sm:w-auto"
+            className="btn btn-primary"
             disabled={isLoading}
             onClick={!isLoading ? () => load(selectedCategory) : undefined}
           >

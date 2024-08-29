@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Question } from '@/interfaces/question.interface';
-import { LazyTeX } from './lazy-tex';
+import { MaybeTeX } from './lazy-tex';
 
 interface QuestionCardProps {
   question: Question;
@@ -19,9 +19,9 @@ export default function QuestionCard({
     <div className="flex flex-col gap-5">
       <div className="text-xl text-gray-700">
         <span className="font-bold text-primary">
-          A{question.id.toString().padStart(3, '0')}:{' '}
+          Q{question.id.toString().padStart(3, '0')}:{' '}
         </span>
-        {question.question}
+        <MaybeTeX text={question.question} />
       </div>
 
       {question.image && (
@@ -85,14 +85,8 @@ function Answer({
       onClick={onClick}
     >
       <div className="text-sm font-bold">{String.fromCharCode(65 + index)}</div>
-      <div className="py-2 text-left text-lg">
-        {answer.startsWith('$') ? (
-          <span className="ml-2">
-            <LazyTeX math={answer.slice(1, answer.length - 1)} />
-          </span>
-        ) : (
-          answer
-        )}
+      <div className="py-2 text-left text-base">
+        <MaybeTeX text={answer} />
       </div>
     </button>
   );

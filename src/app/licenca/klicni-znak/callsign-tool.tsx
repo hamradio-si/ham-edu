@@ -4,6 +4,8 @@ import { robotoMono } from '@/fonts/fonts';
 import {
   generateAllCallsigns,
   levenshteinDistance,
+  phoneticAlphabetEn,
+  phoneticAlphabetSl,
 } from '@/util/callsign-util';
 import {
   faCheckCircle,
@@ -108,79 +110,102 @@ export default function CallsignTool() {
         </div>
       </div>
 
-      <div className="flex flex-col overflow-clip rounded-lg border">
-        {tests
-          .filter((test) =>
-            test.preTest ? test.preTest(clas, callsign) : true,
-          )
-          .map((test, i) => {
-            const result = test.test(callsign);
+      {callsign && (
+        <>
+          {/^S5\d[A-Z]{1,3}$/i.test(callsign) && (
+            <div className="text-center">
+              <div className="morse text-2xl">{callsign.toUpperCase()}</div>
+              {/* <div className="text-sm">
+                (Dolžina: {cwWeight(callsign.toUpperCase())} enot)
+              </div> */}
+              <div>
+                {Array.from(callsign)
+                  .map((c) => phoneticAlphabetEn.get(c.toUpperCase()) || '?')
+                  .join(' ')}
+              </div>
+              <div>
+                {Array.from(callsign)
+                  .map((c) => phoneticAlphabetSl.get(c.toUpperCase()) || '?')
+                  .join(' ')}
+              </div>
+            </div>
+          )}
 
-            return (
+          <div className="flex flex-col overflow-clip rounded-lg border">
+            {tests
+              .filter((test) =>
+                test.preTest ? test.preTest(clas, callsign) : true,
+              )
+              .map((test, i) => {
+                const result = test.test(callsign);
+
+                return (
+                  <div
+                    key={i}
+                    className={`flex flex-row items-center gap-4 border-b px-5 py-3 text-lg last:border-b-0 ${
+                      result ? 'bg-green-100' : 'bg-red-100'
+                    }`}
+                  >
+                    <FontAwesomeIcon
+                      icon={result ? faCheckCircle : faXmarkCircle}
+                      className={`h-5 w-5 ${
+                        result ? 'text-green-600' : 'text-red-600'
+                      }`}
+                    />
+                    <span>{test.name}</span>
+                  </div>
+                );
+              })}
+
+            {/^S5\d[A-Z]{1,3}$/i.test(callsign) && isTaken !== null && (
               <div
-                key={i}
-                className={`flex flex-row items-center gap-4 border-b px-5 py-3 text-lg last:border-b-0 ${
-                  result ? 'bg-green-100' : 'bg-red-100'
+                className={`flex flex-row items-center gap-4 px-5 py-3 text-lg ${
+                  !isTaken ? 'bg-green-100' : 'bg-red-100'
                 }`}
               >
                 <FontAwesomeIcon
-                  icon={result ? faCheckCircle : faXmarkCircle}
+                  icon={!isTaken ? faCheckCircle : faXmarkCircle}
                   className={`h-5 w-5 ${
-                    result ? 'text-green-600' : 'text-red-600'
+                    !isTaken ? 'text-green-600' : 'text-red-600'
                   }`}
                 />
-                <span>{test.name}</span>
+                <span>Klicni znak je {isTaken ? 'zaseden' : 'prost'}</span>
               </div>
-            );
-          })}
-
-        {/^S5\d[A-Z]{1,3}$/i.test(callsign) && isTaken !== null && (
-          <div
-            className={`flex flex-row items-center gap-4 px-5 py-3 text-lg ${
-              !isTaken ? 'bg-green-100' : 'bg-red-100'
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={!isTaken ? faCheckCircle : faXmarkCircle}
-              className={`h-5 w-5 ${
-                !isTaken ? 'text-green-600' : 'text-red-600'
-              }`}
-            />
-            <span>Klicni znak je {isTaken ? 'zaseden' : 'prost'}</span>
+            )}
           </div>
-        )}
-      </div>
 
-      {showSimilar ? (
-        <div>
-          <h4 className="mb-1 text-xl font-semibold">
-            Podobni prosti klicni znaki
-          </h4>
-          <div
-            className={`grid grid-cols-4 gap-2 md:grid-cols-5 ${robotoMono.className}`}
-          >
-            {free
-              ?.map((c) => [levenshteinDistance(callsign, c), c])
-              .sort()
-              .slice(0, 100)
-              .map((c) => (
-                <button
-                  key={c[1]}
-                  onClick={() => setCallsign(c[1] as string)}
-                  className="bg-light hover:border-dark rounded-lg border p-1 text-center"
-                >
-                  {c[1]}
-                </button>
-              ))}
-          </div>
-        </div>
-      ) : (
-        <button
-          className="btn btn-primary"
-          onClick={() => setShowSimilar(true)}
-        >
-          Poišči podobne proste klicne znake
-        </button>
+          {showSimilar ? (
+            <div>
+              <h4 className="mb-1 text-xl font-semibold">
+                Podobni prosti klicni znaki
+              </h4>
+              <div
+                className={`grid grid-cols-4 gap-2 md:grid-cols-5 ${robotoMono.className}`}
+              >
+                {free
+                  ?.map((c) => [levenshteinDistance(callsign, c), c])
+                  .sort()
+                  .slice(0, 100)
+                  .map((c) => (
+                    <button
+                      key={c[1]}
+                      onClick={() => setCallsign(c[1] as string)}
+                      className="bg-light hover:border-dark rounded-lg border p-1 text-center"
+                    >
+                      {c[1]}
+                    </button>
+                  ))}
+              </div>
+            </div>
+          ) : (
+            <button
+              className="btn btn-primary"
+              onClick={() => setShowSimilar(true)}
+            >
+              Poišči podobne proste klicne znake
+            </button>
+          )}
+        </>
       )}
     </div>
   );
