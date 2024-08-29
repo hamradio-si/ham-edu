@@ -15,4 +15,6 @@ export interface Question {
   image?: string;
   answers: string[];
   correct: number;
+  classes: string[];
+  difficulty: number;
 }
