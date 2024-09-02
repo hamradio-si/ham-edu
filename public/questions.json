@@ -46,7 +46,7 @@
     },
     {
       "id": 14,
-      "title": "Časocvne cone in UTC"
+      "title": "Časovne cone in UTC"
     },
     {
       "id": 15,
@@ -351,7 +351,7 @@
       "question": "Kako je skladno z mednarodnim pravilnikom (ITU Radio Regulations) definirana amaterska satelitska služba (Amateur-Satellite Service)?",
       "image": null,
       "answers": [
-        "Amaterska satelitska služba je radiokomunikacijska služba, ki uporablja vesoljske postaje na zemljinih satelitih za iste namene kot amaterska služba",
+        "Amaterska satelitska služba je radiokomunikacijska služba, ki uporablja vesoljske postaje na Zemljinih satelitih za iste namene kot amaterska služba",
         "Sateliti ne spadajo v področje ITU in zato omenjeni pravilnik tega ne ureja",
         "Amaterska satelitska služba je posebna služba, ki skrbi za dovoljenja za delo preko satelitov"
       ],
@@ -740,10 +740,10 @@
     },
     {
       "id": 63,
-      "question": "Na katerem delu 20-meterskega pasu operaterjem A razreda ni dovoljeno oddajati?",
+      "question": "Na katerem delu 20-metrskega pasu operaterjem A razreda ni dovoljeno oddajati?",
       "image": null,
       "answers": [
-        "Operaterji A razreda lahko oddajajo na celem 20-meterskem pasu",
+        "Operaterji A razreda lahko oddajajo na celem 20-metrskem pasu",
         "14050 kHz - 14100 kHz, vendar samo v tekmovanjih",
         "14099 kHz - 14101 kHz, ki je namenjeno radijskim svetilnikom"
       ],
@@ -857,7 +857,7 @@
       "answers": [
         "100 W",
         "300 W",
-        "Operaterjem N razreda ni dovoljeno delo na 15-meterskem pasu"
+        "Operaterjem N razreda ni dovoljeno delo na 15-metrskem pasu"
       ],
       "correct": 0,
       "category": 3
@@ -965,7 +965,7 @@
       "answers": [
         "100 W",
         "300 W",
-        "Operaterjem N razreda ni dovoljeno oddajati na 10-meterskem pasu"
+        "Operaterjem N razreda ni dovoljeno oddajati na 10-metrskem pasu"
       ],
       "correct": 0,
       "category": 3
@@ -1008,7 +1008,7 @@
     },
     {
       "id": 87,
-      "question": "Katero del 4-mmeterskega pasu je v Sloveniji namenjen radioamaterjem?",
+      "question": "Katero del 4-metrskega pasu je v Sloveniji namenjen radioamaterjem?",
       "image": null,
       "answers": [
         "70,000 MHz – 70,500 MHz",
@@ -1032,7 +1032,7 @@
     },
     {
       "id": 89,
-      "question": "Kateri del 70-centimeterskega pasu je v Sloveniji namenjen radioamaterjem?",
+      "question": "Kateri del 70-centimetrskega pasu je v Sloveniji namenjen radioamaterjem?",
       "image": null,
       "answers": [
         "432,000 MHz – 440,000 MHz",
@@ -1112,7 +1112,7 @@
     },
     {
       "id": 96,
-      "question": "S kakšno največjo močjo lahko oddajajo operaterji A razreda na 4-meterskem pasu?",
+      "question": "S kakšno največjo močjo lahko oddajajo operaterji A razreda na 4-metrskem pasu?",
       "image": null,
       "answers": ["25 W", "100 W", "300 W"],
       "correct": 1,
@@ -1120,7 +1120,7 @@
     },
     {
       "id": 97,
-      "question": "S kakšno največjo močjo lahko oddajajo operaterji N razreda na 4-meterskem pasu?",
+      "question": "S kakšno največjo močjo lahko oddajajo operaterji N razreda na 4-metrskem pasu?",
       "image": null,
       "answers": ["10 W", "25 W", "100 W"],
       "correct": 1,
@@ -1280,7 +1280,7 @@
     },
     {
       "id": 113,
-      "question": "Notranji pas 80-meterskega področja določen izključno za CW in digimode delo je:",
+      "question": "Notranji pas 80-metrskega področja določen izključno za CW in digimode delo je:",
       "image": null,
       "answers": [
         "3 500 kHz – 3 800 kHz",
@@ -1292,7 +1292,7 @@
     },
     {
       "id": 114,
-      "question": "Notranji pas 40-meterskerga področja določen izključno za CW in digimode delo je:",
+      "question": "Notranji pas 40-metrskega področja določen izključno za CW in digimode delo je:",
       "image": null,
       "answers": [
         "7 000 kHz – 7 050 kHz",
@@ -1304,7 +1304,7 @@
     },
     {
       "id": 115,
-      "question": "Notranji pas 20-meterskega področja določen izključno za CW in digimode delo je:",
+      "question": "Notranji pas 20-metrskega področja določen izključno za CW in digimode delo je:",
       "image": null,
       "answers": [
         "14 000 kHz – 14 099 kHz",
@@ -1316,7 +1316,7 @@
     },
     {
       "id": 116,
-      "question": "Katere modulacije smemo uporabljati na 30-meterskem pasu?",
+      "question": "Katere modulacije smemo uporabljati na 30-metrskem pasu?",
       "image": null,
       "answers": ["CW in fone", "CW, digimode in fone", "CW in digimode"],
       "correct": 2,
@@ -1324,7 +1324,7 @@
     },
     {
       "id": 117,
-      "question": "S kakšno največjo močjo je operaterjem A razreda dovoljeno oddajati na 2200-meterskem pasu?",
+      "question": "S kakšno največjo močjo je operaterjem A razreda dovoljeno oddajati na 2200-metrskem pasu?",
       "image": null,
       "answers": ["100 W eirp", "25 W eirp", "1 W eirp"],
       "correct": 2,
@@ -1561,7 +1561,7 @@
       "answers": [
         "V Republiki Sloveniji ni predpisa, ki ureja vrste oddaj za amaterske radijske postaje",
         "V Republiki Sloveniji so predpisane vrste oddaj, ki jih smejo uporabljati radioamaterji v skladu z razredom amaterskega operaterja, za katerega imajo opravljen izpit",
-        "V Republiki Sloveniji sicer imamo neke predpise, ki pa preveč posegajao v osebne svoboščine radioamaterjev in jih skladno s procesi demokratizacije, decentralizacije in deregulacije ni več potrebno spoštovati"
+        "V Republiki Sloveniji sicer imamo neke predpise, ki pa preveč posegajo v osebne svoboščine radioamaterjev in jih skladno s procesi demokratizacije, decentralizacije in deregulacije ni več potrebno spoštovati"
       ],
       "correct": 1,
       "category": 4
@@ -5424,7 +5424,7 @@
     },
     {
       "id": 541,
-      "question": "Kolikšna je impedanca zaporedne vezave upora (R = 10 ohmov), tuljave (XL = 20 ohmov) in kondenzatorja (XC = 10 ohmov)?",
+      "question": "Kolikšna je impedanca zaporedne vezave upora (R = 10 ohmov), tuljave ($X_L$ = 20 ohmov) in kondenzatorja ($X_C$ = 10 ohmov)?",
       "image": null,
       "answers": ["(10 + j30) ohm", "(10 - j30) ohm", "(10 + j10) ohm"],
       "correct": 2,
@@ -5656,7 +5656,7 @@
     },
     {
       "id": 562,
-      "question": "Po kateri formuli izračunamo Q-faktor nihajnega kroga, če sta dani pasovna širina B in resonančna frekvenca fres?",
+      "question": "Po kateri formuli izračunamo Q-faktor nihajnega kroga, če sta dani pasovna širina B in resonančna frekvenca $f_{res}$?",
       "image": null,
       "answers": [
         "$Q = \\dfrac{B}{f_{res}}$",

@@ -1,5 +1,51 @@
 import Link from 'next/link';
 
+const links = [
+  {
+    title: 'Domov',
+    href: '/',
+  },
+  {
+    title: 'Tečaji',
+    href: '/tecaji',
+  },
+  {
+    title: 'Vsebine',
+    href: '/vsebine',
+  },
+  {
+    title: 'Literatura',
+    href: '/literatura',
+  },
+  {
+    title: 'Radioamaterski izpit',
+    href: '/izpit',
+  },
+  {
+    title: 'Vaje',
+    href: '/vaje',
+  },
+  {
+    title: 'Kontakt',
+    href: '/kontakt',
+  },
+];
+
+const externalLinks = [
+  {
+    title: 'Zveza Radioamaterjev Slovenije',
+    href: 'https://www.hamradio.si/',
+  },
+  {
+    title: 'S50LEA Forum',
+    href: 'https://forum.hamradio.si/',
+  },
+  {
+    title: 'Spletna stran IARU R1',
+    href: 'https://www.iaru-r1.org/',
+  },
+];
+
 export function Footer() {
   return (
     <footer className="footer bg-base-200 p-10 text-base-content">
@@ -25,37 +71,24 @@ export function Footer() {
       </aside>
       <nav>
         <header className="footer-title">Kazalo</header>
-        <Link href="/tecaji" className="link-hover link">
-          Tečaji
-        </Link>
-        <Link href="/vsebine" className="link-hover link">
-          Vsebine
-        </Link>
-        <Link href="/izpit" className="link-hover link">
-          Radioamaterski izpit
-        </Link>
-        <Link href="/vaje" className="link-hover link">
-          Vaja za izpit
-        </Link>
-        <Link href="/kontakt" className="link-hover link">
-          Kontakt
-        </Link>
+        {links.map(({ title, href }) => (
+          <Link key={href} href={href} className="link-hover link">
+            {title}
+          </Link>
+        ))}
       </nav>
       <nav>
         <header className="footer-title">Zunanje povezave</header>
-        <Link href="https://www.hamradio.si/" className="link-hover link">
-          Zveza Radioamaterjev Slovenije
-        </Link>
-        <Link
-          target="_blank"
-          href="https://forum.hamradio.si/"
-          className="link-hover link"
-        >
-          S50LEA Forum
-        </Link>
-        <Link href="https://www.iaru-r1.org/" className="link-hover link">
-          Spletna stran IARU R1
-        </Link>
+        {externalLinks.map(({ title, href }) => (
+          <Link
+            key={href}
+            href={href}
+            target="_blank"
+            className="link-hover link"
+          >
+            {title}
+          </Link>
+        ))}
       </nav>
     </footer>
   );

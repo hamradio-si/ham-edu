@@ -9,6 +9,7 @@ import { Logo } from '@/assets';
 export const metadata: Metadata = {
   title: 'Vsebine',
   description: 'Poučne vsebine',
+  keywords: ['vsebine', 'poučno', 'znanje'],
   openGraph: {
     title: 'Vsebine',
     description: 'Poučne vsebine',

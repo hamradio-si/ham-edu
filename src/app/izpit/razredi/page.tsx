@@ -4,10 +4,11 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Razredi radioamaterjev',
-  description: 'Premerjava razredov radioamaterjev',
+  description: 'Primerjava razredov radioamaterjev',
+  keywords: ['radioamater', 'razred', 'N', 'A', 'omejitve', 'primerjava'],
   openGraph: {
     title: 'Razredi radioamaterjev',
-    description: 'Premerjava razredov radioamaterjev',
+    description: 'Primerjava razredov radioamaterjev',
   },
 };
 

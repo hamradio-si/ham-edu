@@ -1,6 +1,5 @@
 import { strapiFunctions, strapiUrl } from '@/api';
 import { Logo } from '@/assets';
-import { Hero } from '@/components/hero';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,23 +8,71 @@ export default async function Home() {
 
   return (
     <>
-      <Hero image="/ef8r.jpg" className="min-h-[500px]">
-        <h1 className="mb-5 text-3xl font-bold md:text-4xl">Pozdravljen</h1>
-        <p className="mb-5">
-          Dobrodošel na Radioamaterskem izobraževalnem portalu Zveze
-          Radioamaterjev Slovenije. Na tem portalu lahko najdeš vsebine, ki
-          pomagajo pri pripravi na radioamaterski izpit ali pa samo želiš
-          izvedeti kaj več o radioamaterstvu.
-        </p>
-        <div className="flex gap-3">
-          <Link className="btn btn-primary" href="/tecaji">
-            Tečaji
-          </Link>
-          <Link className="btn btn-primary" href="/vsebine">
-            Ostale vsebine
-          </Link>
+      <div
+        className="flex min-h-[500px] bg-cover bg-center"
+        style={{ backgroundImage: `url(/ef8r.jpg)` }}
+      >
+        <div className="container flex flex-col items-center justify-center gap-8 py-8 lg:flex-row [&>*]:flex-1">
+          <div className="max-w-lg rounded-2xl bg-neutral/80 p-10 text-white">
+            <h2 className="mb-5 text-2xl font-bold md:text-3xl">
+              Kaj je radioamaterstvo?
+            </h2>
+            <p className="mb-5">
+              Radioamaterstvo je ljubiteljsko, nepoklicno ukvarjanje z radiom in
+              radiotehniko. Več o radioamaterstvu in kaj vse lahko počneš kot
+              radioamater si lahko prebereš na spodnji povezavi.
+            </p>
+            <div className="flex flex-wrap gap-3 [&>*]:min-w-max [&>*]:flex-grow">
+              <Link className="btn btn-primary" href="/radioamaterstvo">
+                Kaj je radioamaterstvo?
+              </Link>
+              <Link className="btn btn-primary" href="/izpit">
+                Radioamaterski izpit
+              </Link>
+            </div>
+          </div>
+
+          <div className="max-w-lg rounded-2xl bg-neutral/80 p-10 text-white">
+            <h2 className="mb-5 text-2xl font-bold md:text-3xl">
+              Učenje za izpit
+            </h2>
+            <p className="mb-5">
+              Za izpit se lahko učiš z udeležitvijo tečaja, poslušanjem
+              posnetkov predavanj, branjem priročnikov ali pa branjem vsebin na
+              tej spletni strani.
+            </p>
+            <div className="flex flex-wrap gap-3 [&>*]:min-w-max [&>*]:flex-grow">
+              <Link className="btn btn-primary" href="/tecaji">
+                Tečaji
+              </Link>
+              <Link className="btn btn-primary" href="/literatura">
+                Literatura
+              </Link>
+              <Link className="btn btn-primary" href="/vsebine">
+                Vsebine
+              </Link>
+            </div>
+          </div>
+
+          <div className="max-w-lg rounded-2xl bg-neutral/80 p-10 text-white">
+            <h2 className="mb-5 text-2xl font-bold md:text-3xl">
+              Vaja za izpit
+            </h2>
+            <p className="mb-5">
+              Za izpit lahko vadiš z naključno izbranimi vprašanji ali pa se
+              preizkusiš s preizkusnim izpitom.
+            </p>
+            <div className="flex flex-wrap gap-3 [&>*]:min-w-max [&>*]:flex-grow">
+              <Link className="btn btn-primary" href="/vaje">
+                Vaja vprašanj
+              </Link>
+              <Link className="btn btn-primary" href="/vaje/izpit">
+                Preizkusni izpit
+              </Link>
+            </div>
+          </div>
         </div>
-      </Hero>
+      </div>
 
       <div className="section container flex flex-col gap-8">
         <div className="prose">

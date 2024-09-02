@@ -9,13 +9,21 @@ import { useState } from 'react';
 
 const links = [
   {
+    title: 'Domov',
+    href: '/',
+  },
+  {
     title: 'Tečaji',
     href: '/tecaji',
   },
   {
-    title: 'Vsebine',
-    href: '/vsebine',
+    title: 'Literatura',
+    href: '/literatura',
   },
+  // {
+  //   title: 'Vsebine',
+  //   href: '/vsebine',
+  // },
   {
     title: 'Izpit in licenca',
     sub: [
@@ -43,12 +51,21 @@ const links = [
   },
   {
     title: 'Vaje',
-    href: '/vaje',
+    sub: [
+      {
+        title: 'Vaja vprašanj',
+        href: '/vaje',
+      },
+      {
+        title: 'Preizkusni izpit',
+        href: '/vaje/izpit',
+      },
+    ],
   },
-  {
-    title: 'Kontakt',
-    href: '/kontakt',
-  },
+  // {
+  //   title: 'Kontakt',
+  //   href: '/kontakt',
+  // },
 ];
 
 export function Header() {

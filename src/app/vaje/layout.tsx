@@ -5,6 +5,20 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Vaja za radioamaterski izpit',
   description: 'Vadi vprašanja, ki se lahko pojavijo na izpitu',
+  keywords: [
+    'izpit',
+    'vaje',
+    'vaja',
+    'vprašanja',
+    'izpitna vprašanja',
+    'vaje za izpit',
+    'preizkus znanja',
+    'preizkusni izpit',
+  ],
+  openGraph: {
+    title: 'Vaja za radioamaterski izpit',
+    description: 'Vadi vprašanja, ki se lahko pojavijo na izpitu',
+  },
 };
 
 export default function VajeLayout({ children }: { children: ReactNode }) {
