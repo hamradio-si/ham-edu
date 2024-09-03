@@ -39,7 +39,7 @@ export function Search() {
         className="input input-bordered w-full"
         defaultValue={
           typeof window !== 'undefined'
-            ? new URL(window.location.href).searchParams.get('q') ?? ''
+            ? (new URL(window.location.href).searchParams.get('q') ?? '')
             : ''
         }
         onChange={(e) => debouncedSet(e.target.value)}
