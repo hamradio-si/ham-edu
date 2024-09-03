@@ -21,12 +21,15 @@ export async function POST(request: NextRequest) {
 
   // Revalidate article
   if (event.model === 'article') {
-    const article = event.entry as { slug: string; course?: { slug: string } };
+    const article = event.entry as {
+      slug: string;
+      course: { data: { slug: string } | null };
+    };
 
     revalidatePath(`/v/${article.slug}`);
     revalidatePath('/vsebine');
-    if (article.course) {
-      revalidatePath(`/tecaji/${article.course.slug}`);
+    if (article.course.data) {
+      revalidatePath(`/tecaji/${article.course.data.slug}`);
     }
     revalidatePath('/');
   }
@@ -35,24 +38,24 @@ export async function POST(request: NextRequest) {
   if (event.model === 'course') {
     const course = event.entry as {
       slug: string;
-      parent: { slug: string };
-      subcourses: { slug: string }[];
-      articles: { slug: string }[];
+      parent: { data: { slug: string } | null };
+      subcourses: { data: { slug: string }[] | null };
+      articles: { data: { slug: string }[] | null };
     };
 
     revalidatePath(`/tecaji/${course.slug}`);
 
-    if (event.entry.parent) {
-      const parent = course.parent as { slug: string };
+    if (course.parent.data) {
+      const parent = course.parent.data;
       revalidatePath(`/tecaji/${parent.slug}`);
     } else {
       revalidatePath('/tecaji');
     }
 
-    course.subcourses?.forEach((subcourse: { slug: string }) => {
+    course.subcourses.data?.forEach((subcourse: { slug: string }) => {
       revalidatePath(`/tecaji/${subcourse.slug}`);
     });
-    course.articles?.forEach((article: { slug: string }) => {
+    course.articles.data?.forEach((article: { slug: string }) => {
       revalidatePath(`/v/${article.slug}`);
     });
   }
