@@ -1,3 +1,4 @@
+import { strapiFunctions } from '@/api';
 import { revalidatePath } from 'next/cache';
 import { NextRequest } from 'next/server';
 
@@ -21,42 +22,38 @@ export async function POST(request: NextRequest) {
 
   // Revalidate article
   if (event.model === 'article') {
-    const article = event.entry as {
-      slug: string;
-      course: { data: { slug: string } | null };
-    };
+    const slug = event.entry.slug as string;
 
-    revalidatePath(`/v/${article.slug}`);
+    revalidatePath(`/v/${slug}`);
     revalidatePath('/vsebine');
-    if (article.course.data) {
-      revalidatePath(`/tecaji/${article.course.data.slug}`);
-    }
     revalidatePath('/');
+
+    const article = (await strapiFunctions.getArticleBySlug(slug))?.attributes;
+    if (article?.course?.data) {
+      const courseSlug = article.course.data.attributes.slug;
+      if (courseSlug) revalidatePath(`/tecaji/${courseSlug}`);
+      else revalidatePath('/tecaji');
+    }
   }
 
   // Revalidate course
   if (event.model === 'course') {
-    const course = event.entry as {
-      slug: string;
-      parent: { data: { slug: string } | null };
-      subcourses: { data: { slug: string }[] | null };
-      articles: { data: { slug: string }[] | null };
-    };
+    const slug = event.entry.slug as string | null;
 
-    revalidatePath(`/tecaji/${course.slug}`);
+    if (slug) revalidatePath(`/tecaji/${slug}`);
+    else revalidatePath('/tecaji');
 
-    if (course.parent.data) {
-      const parent = course.parent.data;
+    const course = (await strapiFunctions.getCourseBySlug(slug))?.attributes;
+    if (course?.parent?.data) {
+      const parent = course.parent?.data.attributes;
       revalidatePath(`/tecaji/${parent.slug}`);
-    } else {
-      revalidatePath('/tecaji');
     }
 
-    course.subcourses.data?.forEach((subcourse: { slug: string }) => {
-      revalidatePath(`/tecaji/${subcourse.slug}`);
+    course?.subcourses?.data?.forEach((subcourse) => {
+      revalidatePath(`/tecaji/${subcourse.attributes.slug}`);
     });
-    course.articles.data?.forEach((article: { slug: string }) => {
-      revalidatePath(`/v/${article.slug}`);
+    course?.articles?.data?.forEach((article) => {
+      revalidatePath(`/v/${article.attributes.slug}`);
     });
   }
 

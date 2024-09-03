@@ -42,7 +42,7 @@ export const strapiFunctions = {
     const data = await res.json();
     return data.data;
   },
-  getCourseBySlug: async (slug?: string): Promise<Course> => {
+  getCourseBySlug: async (slug?: string | null): Promise<Course> => {
     const slg = slug ? `=${slug}` : '[$null]=true';
     const res = await fetch(
       `${strapiUrl}/api/courses?filters[slug]${slg}&populate[parent]=*&populate[subcourses]=*&populate[articles][fields][0]=title&populate[articles][fields][1]=slug`,
