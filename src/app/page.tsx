@@ -2,16 +2,23 @@ import { strapiFunctions, strapiUrl } from '@/api';
 import { Logo } from '@/assets';
 import Image from 'next/image';
 import Link from 'next/link';
+import ef8r from './ef8r.jpg';
 
 export default async function Home() {
   const { data: vsebine } = await strapiFunctions.getArticles();
 
   return (
     <>
-      <div
-        className="flex min-h-[500px] bg-cover bg-center"
-        style={{ backgroundImage: `url(/ef8r.jpg)` }}
-      >
+      <div className="relative flex min-h-[500px]">
+        <Image
+          src={ef8r}
+          alt="EF8R antene"
+          fill
+          className="absolute inset-0 -z-10 object-cover object-center"
+          quality={100}
+          placeholder="blur"
+        />
+
         <div className="container flex flex-col items-center justify-center gap-8 py-8 lg:flex-row [&>*]:flex-1">
           <div className="max-w-lg rounded-2xl bg-neutral/80 p-10 text-white">
             <h2 className="mb-5 text-2xl font-bold md:text-3xl">
@@ -86,21 +93,19 @@ export default async function Home() {
               href={`/v/${a.slug}`}
               className="flex-1 transition-all"
             >
-              <figure>
-                {a.cover.data ? (
+              <figure className="relative overflow-clip rounded-lg bg-base-200">
+                <Logo className="max-h-32 w-full p-4 text-base-300" />
+                {a.cover.data && (
                   <Image
                     src={`${strapiUrl}${a.cover.data.attributes.url}`}
-                    alt={a.cover.data.attributes.alternativeText}
-                    height={600}
-                    width={600}
+                    alt={a.cover.data.attributes.alternativeText || a.title}
+                    fill
                     style={{
                       maxHeight: '128px',
                       objectFit: 'cover',
                     }}
-                    className="rounded-lg"
+                    className="absolute inset-0"
                   />
-                ) : (
-                  <Logo className="max-h-32 w-full rounded-lg bg-base-200 p-4 text-base-300" />
                 )}
               </figure>
               <div className="card-body px-2 py-4">
