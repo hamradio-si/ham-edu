@@ -28,6 +28,7 @@ export async function generateMetadata({
     title: article.title,
     description: article.subtitle,
     authors: article.author ? { name: article.author } : undefined,
+    keywords: article.keywords || undefined,
     openGraph: {
       title: article.title,
       description: article.subtitle,

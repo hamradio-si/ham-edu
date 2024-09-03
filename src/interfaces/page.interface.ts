@@ -4,7 +4,7 @@ export interface Page {
     slug: string;
     title: string;
     description: string;
-    keywords: string;
+    keywords?: string;
     content: string;
     createdAt: string;
     updatedAt: string;

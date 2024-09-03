@@ -22,5 +22,6 @@ export interface Course {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    keywords?: string;
   };
 }

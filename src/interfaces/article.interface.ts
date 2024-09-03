@@ -38,5 +38,6 @@ export interface Article {
     updatedAt: string;
     publishedAt: string;
     locale: string;
+    keywords?: string;
   };
 }
